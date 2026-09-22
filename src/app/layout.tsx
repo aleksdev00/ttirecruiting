@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Archivo, Inter } from "next/font/google";
+import { Anton, Archivo, IBM_Plex_Mono, Inter } from "next/font/google";
 import "./globals.css";
 
 const archivo = Archivo({
@@ -11,6 +11,20 @@ const archivo = Archivo({
 const inter = Inter({
   subsets: ["latin"],
   variable: "--font-inter",
+  display: "swap",
+});
+
+const anton = Anton({
+  subsets: ["latin"],
+  weight: "400",
+  variable: "--vd-display",
+  display: "swap",
+});
+
+const plexMono = IBM_Plex_Mono({
+  subsets: ["latin"],
+  weight: ["400", "600"],
+  variable: "--vd-ledger",
   display: "swap",
 });
 
@@ -38,7 +52,7 @@ export default function RootLayout({ children }: LayoutProps) {
   return (
     <html
       lang="en"
-      className={`${archivo.variable} ${inter.variable} h-full antialiased`}
+      className={`${archivo.variable} ${inter.variable} ${anton.variable} ${plexMono.variable} h-full antialiased`}
     >
       <body className="flex min-h-full flex-col">
         {children}

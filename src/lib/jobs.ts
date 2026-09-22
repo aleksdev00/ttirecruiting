@@ -157,6 +157,294 @@ export const JOBS: JobPosting[] = [
       employmentType: "FULL_TIME",
     },
   },
+  {
+    slug: "otr-flatbed-driver",
+    title: "OTR Flatbed Driver",
+    drivingType: "OTR",
+    equipment: "Flatbed",
+    cdlClass: "A",
+    experience: 3,
+    homeTime: {
+      type: "Bi-weekly",
+      days: 104,
+      label: "Home every other weekend",
+    },
+    pay: {
+      cpm: 0.71,
+      weekly: 1950,
+      signOn: 9000,
+      payTypeNote: "CPM + tarp pay; sign-on placeholder",
+    },
+    annualMiles: "160,000-180,000 (placeholder)",
+    hazmat: false,
+    riderProgram: false,
+    petProgram: true,
+    orientation: "5 days, paid (placeholder)",
+    summary:
+      "Long-haul flatbed freight across the lower 48 with a predictable out-and-back rhythm.",
+    responsibilities: [
+      "Secure and tarp oversize flatbed loads for long-haul runs",
+      "Plan routes and log hours across state lines",
+      "Complete pre-trip and post-trip inspections",
+      "Report freight status to dispatch at each stop",
+    ],
+    requirements: [
+      "Valid Class A CDL with 3+ years OTR flatbed experience",
+      "Clean MVR and current DOT medical card",
+      "Comfortable tarping and chaining in all weather",
+    ],
+    benefits: [
+      "Long-haul miles",
+      "Detention pay and tarp pay (placeholder)",
+      "Paid orientation (placeholder)",
+      "Pet and rider program availability",
+    ],
+    locationLabel: "Kansas City, MO terminal",
+    postingMeta: {
+      validThrough: "2099-12-31",
+      employmentType: "FULL_TIME",
+    },
+  },
+  {
+    slug: "regional-reefer-driver",
+    title: "Regional Reefer Driver",
+    drivingType: "Regional",
+    equipment: "Reefer",
+    cdlClass: "A",
+    experience: 2,
+    homeTime: {
+      type: "Weekly",
+      days: 156,
+      label: "Home every weekend",
+    },
+    pay: {
+      cpm: 0.64,
+      weekly: 1740,
+      signOn: 7500,
+      payTypeNote: "CPM; sign-on placeholder",
+    },
+    annualMiles: "140,000-155,000 (placeholder)",
+    hazmat: false,
+    riderProgram: false,
+    petProgram: true,
+    orientation: "4 days, paid (placeholder)",
+    summary:
+      "Temperature-controlled regional freight on a set footprint, home every weekend.",
+    responsibilities: [
+      "Run reefer loads on a consistent regional lane",
+      "Monitor temperature settings and document status",
+      "Complete pre-trip and post-trip inspections",
+      "Coordinate appointments with dispatch daily",
+    ],
+    requirements: [
+      "Valid Class A CDL with 2+ years driving experience",
+      "Clean MVR and current DOT medical card",
+      "Experience with temperature-controlled freight preferred",
+    ],
+    benefits: [
+      "Home every weekend",
+      "Detention pay (placeholder)",
+      "Paid orientation (placeholder)",
+      "Pet and rider program availability",
+    ],
+    locationLabel: "Kansas City, MO terminal",
+    postingMeta: {
+      validThrough: "2099-12-31",
+      employmentType: "FULL_TIME",
+    },
+  },
+  {
+    slug: "local-dry-van-driver",
+    title: "Local Dry Van Driver",
+    drivingType: "Local",
+    equipment: "Dry Van",
+    cdlClass: "A",
+    experience: 1,
+    homeTime: {
+      type: "Daily",
+      days: 250,
+      label: "Home most nights",
+    },
+    pay: {
+      cpm: 0.55,
+      weekly: 1450,
+      signOn: 4000,
+      payTypeNote: "Hourly + stops; sign-on placeholder",
+    },
+    annualMiles: "80,000-95,000 (placeholder)",
+    hazmat: false,
+    riderProgram: false,
+    petProgram: false,
+    orientation: "3 days, paid (placeholder)",
+    summary:
+      "Daily dry van work out of the same yard, back most nights near the terminal.",
+    responsibilities: [
+      "Run same-day dry van routes from the terminal",
+      "Perform pre-trip and post-trip inspections",
+      "Manage delivery appointments and paperwork",
+      "Report issues to dispatch before end of shift",
+    ],
+    requirements: [
+      "Valid Class A CDL with 1+ year driving experience",
+      "Clean MVR and current DOT medical card",
+      "Comfortable with daily home time and local stops",
+    ],
+    benefits: [
+      "Home most nights",
+      "Stop pay (placeholder)",
+      "Paid orientation (placeholder)",
+      "Consistent home schedule",
+    ],
+    locationLabel: "Kansas City, MO terminal",
+    postingMeta: {
+      validThrough: "2099-12-31",
+      employmentType: "FULL_TIME",
+    },
+  },
+  {
+    slug: "dedicated-tanker-driver",
+    title: "Dedicated Tanker Driver",
+    drivingType: "Dedicated",
+    equipment: "Tanker",
+    cdlClass: "A",
+    experience: 4,
+    homeTime: {
+      type: "Weekly",
+      days: 156,
+      label: "Home every weekend",
+    },
+    pay: {
+      cpm: 0.73,
+      weekly: 2010,
+      signOn: 10000,
+      payTypeNote: "CPM; sign-on placeholder",
+    },
+    annualMiles: "120,000-135,000 (placeholder)",
+    hazmat: false,
+    riderProgram: false,
+    petProgram: false,
+    orientation: "5 days, paid (placeholder)",
+    summary:
+      "Repeatable freight for one account with a steady weekly schedule and a fixed terminal.",
+    responsibilities: [
+      "Run the same account on a repeatable schedule",
+      "Perform pre-trip and post-trip inspections",
+      "Maintain accurate load documentation",
+      "Coordinate with the same dispatch contact daily",
+    ],
+    requirements: [
+      "Valid Class A CDL with 4+ years driving experience",
+      "Clean MVR and current DOT medical card",
+      "Tanker endorsement required or willingness to obtain",
+    ],
+    benefits: [
+      "Consistent account and schedule",
+      "Detention pay (placeholder)",
+      "Paid orientation (placeholder)",
+      "Predictable home time",
+    ],
+    locationLabel: "Kansas City, MO terminal",
+    postingMeta: {
+      validThrough: "2099-12-31",
+      employmentType: "FULL_TIME",
+    },
+  },
+  {
+    slug: "otree-dry-van-driver",
+    title: "OTR Dry Van Driver",
+    drivingType: "OTR",
+    equipment: "Dry Van",
+    cdlClass: "A",
+    experience: 2,
+    homeTime: {
+      type: "Bi-weekly",
+      days: 104,
+      label: "Home every other weekend",
+    },
+    pay: {
+      cpm: 0.66,
+      weekly: 1870,
+      signOn: 8500,
+      payTypeNote: "CPM; sign-on placeholder",
+    },
+    annualMiles: "155,000-175,000 (placeholder)",
+    hazmat: false,
+    riderProgram: false,
+    petProgram: true,
+    orientation: "4 days, paid (placeholder)",
+    summary:
+      "Coast-to-coast dry van freight with a steady out-and-back rhythm across the country.",
+    responsibilities: [
+      "Run coast-to-coast dry van freight",
+      "Plan routes and manage hours of service",
+      "Complete pre-trip and post-trip inspections",
+      "Report freight status to dispatch each stop",
+    ],
+    requirements: [
+      "Valid Class A CDL with 2+ years OTR experience",
+      "Clean MVR and current DOT medical card",
+      "Comfortable with long-haul schedule",
+    ],
+    benefits: [
+      "Long-haul miles",
+      "Detention pay (placeholder)",
+      "Paid orientation (placeholder)",
+      "Pet and rider program availability",
+    ],
+    locationLabel: "Kansas City, MO terminal",
+    postingMeta: {
+      validThrough: "2099-12-31",
+      employmentType: "FULL_TIME",
+    },
+  },
+  {
+    slug: "local-box-truck-driver",
+    title: "Local Box Truck Driver",
+    drivingType: "Local",
+    equipment: "Box Truck",
+    cdlClass: "B",
+    experience: 1,
+    homeTime: {
+      type: "Daily",
+      days: 250,
+      label: "Home most nights",
+    },
+    pay: {
+      cpm: 0.5,
+      weekly: 1380,
+      signOn: 3500,
+      payTypeNote: "Hourly + stops; sign-on placeholder",
+    },
+    annualMiles: "60,000-75,000 (placeholder)",
+    hazmat: false,
+    riderProgram: false,
+    petProgram: false,
+    orientation: "2 days, paid (placeholder)",
+    summary:
+      "Daytime box truck deliveries near the terminal, home most nights.",
+    responsibilities: [
+      "Run daytime box truck delivery routes",
+      "Complete vehicle inspections each shift",
+      "Manage delivery windows and customer handoffs",
+      "Log stops and report completion to dispatch",
+    ],
+    requirements: [
+      "Valid Class B CDL with 1+ year driving experience",
+      "Clean MVR and current medical card",
+      "Comfortable with daytime local deliveries",
+    ],
+    benefits: [
+      "Home most nights",
+      "Stop pay (placeholder)",
+      "Paid orientation (placeholder)",
+      "Consistent daytime schedule",
+    ],
+    locationLabel: "Kansas City, MO terminal",
+    postingMeta: {
+      validThrough: "2099-12-31",
+      employmentType: "FULL_TIME",
+    },
+  },
 ];
 
 export function getJobBySlug(slug: string): JobPosting | undefined {
@@ -169,25 +457,65 @@ export function getJobsByType(
   return JOBS.filter((job) => job.drivingType === drivingType);
 }
 
+export const EQUIPMENT_OPTIONS = [
+  "Flatbed",
+  "Reefer",
+  "Dry Van",
+  "Tanker",
+  "Box Truck",
+] as const satisfies EquipmentType[];
+
+export type JobFilters = {
+  drivingType?: DrivingType;
+  equipment?: EquipmentType;
+  query?: string;
+};
+
+export function filterJobs(filters: JobFilters): JobPosting[] {
+  const q = filters.query?.trim().toLowerCase() ?? "";
+  return JOBS.filter((job) => {
+    if (filters.drivingType && job.drivingType !== filters.drivingType) {
+      return false;
+    }
+    if (filters.equipment && job.equipment !== filters.equipment) {
+      return false;
+    }
+    if (q) {
+      const haystack =
+        [job.title, job.summary, job.locationLabel, job.equipment]
+          .join(" ")
+          .toLowerCase();
+      if (!haystack.includes(q)) {
+        return false;
+      }
+    }
+    return true;
+  });
+}
+
 export const QUIZ_PATHS = {
-  start: "/quiz/start",
-  driving: "/quiz/driving",
-  homeTime: "/quiz/home-time",
-  equipment: "/quiz/equipment",
-  cdl: "/quiz/cdl",
-  results: "/quiz/results",
+  start: "/find-your-fit",
+  driving: "/find-your-fit/driving",
+  homeTime: "/find-your-fit/home-time",
+  equipment: "/find-your-fit/equipment",
+  cdl: "/find-your-fit/cdl",
+  results: "/find-your-fit/results",
 } as const;
 
 // Repository seam (Supabase-ready). Swap the array for a client without
 // touching call sites (see AGENTS.md data-layer plan).
 export interface JobRepository {
   listJobs(): Promise<JobPosting[]>;
+  searchJobs(filters: JobFilters): Promise<JobPosting[]>;
   getJobBySlug(slug: string): Promise<JobPosting | undefined>;
 }
 
 export const jobRepository: JobRepository = {
   async listJobs() {
     return JOBS;
+  },
+  async searchJobs(filters) {
+    return filterJobs(filters);
   },
   async getJobBySlug(slug: string) {
     return getJobBySlug(slug);

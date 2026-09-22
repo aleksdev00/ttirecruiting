@@ -1,0 +1,279 @@
+/*
+ * TTI RECRUITING -- V3 "DISPATCH" EDITORIAL MOTION SYSTEM.
+ *
+ * A printed-dispatch vocabulary: masthead lines close like a cover peeling
+ * away, the route rail reads as travel, ledger rows step in, and reading
+ * progress rides along the sticky header. Everything is CSS-only scroll
+ * timelines (never JS listeners) and every scroll-driven piece is fully
+ * bidirectional -- scrolling up reverses the exact state that scrolling
+ * down created. Reduced-motion silences the whole system and leaves every
+ * piece in its final, visible state.
+ *
+ * Repeatable primitives:
+ *   .v3-mline        -> masked-line wrapper (the mask lives on the wrapper
+ *                       so scroll progress is never trapped by a clip
+ *                       ancestor -- the pattern proven on this codebase).
+ *   .v3-fade         -> fade-and-settle copy.
+ *   .v3-ledger-row   -> hairline ledger entry that steps up.
+ *   named timelines: --sheet-view, --board-view, --plate-view.
+ *   root timelines:  scroll(root) for the masthead + progress rails.
+ */
+
+/* ---------- keyframes ---------- */
+
+@keyframes v3-mask-down {
+  from {
+    clip-path: inset(0 0 0 0);
+  }
+  to {
+    clip-path: inset(0 0 100% 0);
+  }
+}
+
+@keyframes v3-mask-up {
+  from {
+    clip-path: inset(0 0 100% 0);
+  }
+  to {
+    clip-path: inset(0 0 0 0);
+  }
+}
+
+@keyframes v3-fade-out {
+  from {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  to {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+}
+
+@keyframes v3-up-in {
+  from {
+    opacity: 0;
+    transform: translateY(22px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes v3-grow {
+  from {
+    transform: scaleX(0);
+  }
+  to {
+    transform: scaleX(1);
+  }
+}
+
+@keyframes v3-photo-parallax {
+  from {
+    transform: translateY(-3%) scale(1.08);
+  }
+  to {
+    transform: translateY(5%) scale(1);
+  }
+}
+
+@keyframes v3-glyph-in {
+  from {
+    opacity: 0;
+    transform: scale(0.92);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* ---------- masked line primitives ---------- */
+
+.v3-mline {
+  display: block;
+  will-change: clip-path;
+}
+
+.v3-mline-txt {
+  display: block;
+}
+
+/* ---------- MASTHEAD (scroll(root), fully reversible) ---------- */
+
+.v3-mast .v3-mline {
+  animation: v3-mask-down linear both;
+  animation-timeline: scroll(root);
+}
+.v3-mast .v3-l1 {
+  animation-range: 0vh 62vh;
+}
+.v3-mast .v3-l2 {
+  animation-range: 0vh 78vh;
+}
+.v3-mast .v3-l3 {
+  animation-range: 0vh 94vh;
+}
+.v3-mast .v3-l4 {
+  animation-range: 0vh 110vh;
+}
+
+.v3-mast .v3-fade {
+  animation: v3-fade-out linear both;
+  animation-timeline: scroll(root);
+}
+.v3-mast .v3-d1 {
+  animation-range: 0vh 46vh;
+}
+.v3-mast .v3-d2 {
+  animation-range: 0vh 70vh;
+}
+.v3-mast .v3-d3 {
+  animation-range: 0vh 82vh;
+}
+.v3-ticker {
+  animation: v3-fade-out linear both;
+  animation-timeline: scroll(root);
+  animation-range: 0vh 88vh;
+}
+
+.v3-photo-img {
+  will-change: transform;
+  animation: v3-photo-parallax linear;
+  animation-timeline: scroll(root);
+  animation-range: 0 100vh;
+}
+
+.v3-rail {
+  position: relative;
+  height: 2px;
+  background: color-mix(in oklab, var(--color-ink) 16%, transparent);
+}
+.v3-rail-fill {
+  position: absolute;
+  inset: 0;
+  transform-origin: left;
+  background: var(--color-signal-deep);
+  animation: v3-grow linear both;
+  animation-timeline: scroll(root);
+  animation-range: 0vh 120vh;
+}
+
+/* sticky header reading progress */
+.v3-progress {
+  position: absolute;
+  left: 0;
+  bottom: -2px;
+  height: 2px;
+  width: 100%;
+  transform-origin: left;
+  background: var(--color-signal-deep);
+  animation: v3-grow linear both;
+  animation-timeline: scroll(root);
+}
+
+/* ---------- BELOW THE FOLD (named view-timelines, reversible) ---------- */
+
+@layer components {
+  .v3-root .v3-sheet {
+    view-timeline-name: --sheet-view;
+    view-timeline-axis: block;
+  }
+  .v3-root .v3-board {
+    view-timeline-name: --board-view;
+    view-timeline-axis: block;
+  }
+  .v3-root .v3-plate {
+    view-timeline-name: --plate-view;
+    view-timeline-axis: block;
+  }
+
+  .v3-sheet .v3-mline,
+  .v3-sheet .v3-word {
+    animation: v3-mask-up linear both;
+    animation-timeline: --sheet-view;
+    animation-range: entry 4% entry 34%;
+  }
+  .v3-sheet .v3-ledger-row {
+    animation: v3-up-in linear both;
+    animation-timeline: --sheet-view;
+    animation-range: entry 14% entry 72%;
+  }
+  .v3-sheet .v3-fact {
+    animation: v3-up-in linear both;
+    animation-timeline: --sheet-view;
+    animation-range: entry 10% entry 58%;
+  }
+
+  .v3-board .v3-headline {
+    animation: v3-mask-up linear both;
+    animation-timeline: --board-view;
+    animation-range: entry 4% entry 34%;
+  }
+  .v3-board .v3-plate {
+    animation: v3-up-in linear both;
+    animation-timeline: --board-view;
+    animation-range: entry 12% entry 55%;
+  }
+
+  .v3-plate .v3-mline {
+    animation: v3-mask-up linear both;
+    animation-timeline: --plate-view;
+    animation-range: entry 5% entry 40%;
+  }
+  .v3-plate .v3-fade {
+    animation: v3-up-in linear both;
+    animation-timeline: --plate-view;
+    animation-range: entry 15% entry 72%;
+  }
+}
+
+/* ---------- interactive lane glyph (state-change, not scroll) ---------- */
+
+.v3-glyph {
+  transform-origin: center;
+  animation: v3-glyph-in 0.5s cubic-bezier(0.2, 0.9, 0.25, 1) both;
+}
+
+/* ---------- focus ---------- */
+
+.v3-root :is(a, button):focus-visible {
+  outline: 2px solid var(--color-signal-deep);
+  outline-offset: 3px;
+}
+
+/* ---------- reduced motion ---------- */
+
+@media (prefers-reduced-motion: reduce) {
+  .v3-mast .v3-mline,
+  .v3-mast .v3-fade,
+  .v3-ticker,
+  .v3-sheet .v3-mline,
+  .v3-sheet .v3-word,
+  .v3-sheet .v3-ledger-row,
+  .v3-sheet .v3-fact,
+  .v3-board .v3-headline,
+  .v3-board .v3-plate,
+  .v3-plate .v3-mline,
+  .v3-plate .v3-fade,
+  .v3-rail-fill,
+  .v3-progress,
+  .v3-photo-img,
+  .v3-glyph {
+    animation: none !important;
+  }
+  .v3-mline,
+  .v3-word,
+  .v3-mline-txt {
+    clip-path: none !important;
+  }
+  .v3-rail-fill,
+  .v3-progress {
+    transform: none !important;
+  }
+  .v3-photo-img {
+    transform: none !important;
+  }
+}

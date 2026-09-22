@@ -51,6 +51,13 @@
   --color-hazard: var(--hazard);
   --color-hazard-deep: var(--hazard-deep);
   --color-hazard-strong: var(--hazard-strong);
+
+  /* V3 Dispatch tokens */
+  --color-paper: var(--paper);
+  --color-paper-deep: var(--paper-deep);
+  --color-ink-faint: var(--ink-faint);
+  --color-signal: var(--signal);
+  --color-signal-deep: var(--signal-deep);
 }
 
 :root {
@@ -95,6 +102,17 @@
   --hazard: oklch(0.55 0.21 27);      /* bright rubric-red brand */
   --hazard-deep: oklch(0.47 0.19 26); /* pressed red, AA-safe w/ white */
   --hazard-strong: oklch(0.42 0.18 25);
+
+  /* V3 Dispatch — the SAME single Tornik red as the rest of the site.
+     No amber, no second hue: signal == hazard. One red, two roles:
+       bright rubric-red      -> kickers/CTAs on ink
+       routed hazard-deep     -> AA-safe pressed red on paper
+     (aliases, so there is exactly one red token family) */
+  --paper: oklch(0.955 0.006 90);      /* warm cream ground */
+  --signal: var(--hazard);        /* Tornik rubber-red, bright (on ink) */
+  --signal-deep: var(--hazard-deep); /* Tornik red, AA-safe (on paper) */
+  --paper-deep: oklch(0.912 0.012 87); /* recessed panel */
+  --ink-faint: oklch(0.47 0.012 52);   /* secondary text on paper */
 }
 
 .dark {
@@ -148,4 +166,6 @@
 @theme inline {
   --font-sans: var(--font-archivo);
   --font-mono: var(--font-inter);
+  --font-display: var(--vd-display);
+  --font-ledger: var(--vd-ledger);
 }
