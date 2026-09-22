@@ -1,0 +1,538 @@
+/*
+ * TTI Recruiting -- editorial motion system.
+ *
+ * Two families, both CSS-only, both respecting reduced-motion:
+ *
+ * 1. LOAD family (tt-*) -- plays once as the hero mounts (route draws,
+ *    nodes light, copy lifts, photo pulls back from 1.06). Above the fold.
+ * 2. SCROLL family (dt-*) -- scroll-driven via animation-timeline
+ *    (view() + named view-timelines named per lane). Below the fold:
+ *    imagery un-zooms, copy lifts in, lane routes draw, waypoint nodes
+ *    light, rails grow, the dedicated seal turns in.
+ *
+ * Based on the scroll-driven language observed at growthcdl.com
+ * (chero-push / chero-copy-in / chero-draw / chero-node-on / pulse),
+ * but implemented as an original TTI system, named per lane.
+ */
+
+/* ---------- keyframes ---------- */
+
+@keyframes tti-route-draw {
+  from {
+    stroke-dashoffset: 1000;
+  }
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+@keyframes tti-node-on {
+  from {
+    fill-opacity: 0;
+  }
+  to {
+    fill-opacity: 1;
+  }
+}
+
+@keyframes tti-copy-in {
+  from {
+    opacity: 0;
+    transform: translateY(22px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes tti-zoom {
+  from {
+    transform: scale(1.06);
+  }
+  to {
+    transform: scale(1);
+  }
+}
+
+@keyframes tti-rail-x {
+  from {
+    transform: scaleX(0);
+  }
+  to {
+    transform: scaleX(1);
+  }
+}
+
+@keyframes tti-pulse {
+  0%,
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.35;
+    transform: scale(1.4);
+  }
+}
+
+/* ---------- HERO rewind (scroll-driven, reversible) ---------- */
+
+/* hero is anchored at the top of the page, so its rewind is driven by the
+   root scroll position: fully revealed at scroll 0, closing proportionally
+   as the first viewport drives away, reopened as the user scrolls back up. */
+
+/* photo stage: clips closed (and returns toward its resting scale) as the
+   top drives away; reopens proportionally on the way back */
+@keyframes tti-hero-stage {
+  from {
+    clip-path: inset(0 0 0 0);
+    transform: scale(1);
+  }
+  to {
+    clip-path: inset(0 0 100% 0);
+    transform: scale(1.08);
+  }
+}
+.tt-hero-stage {
+  will-change: clip-path, transform;
+  animation: tti-hero-stage linear both;
+  animation-timeline: scroll(root);
+  animation-range: 0vh 120vh;
+}
+
+/* headline masks: each masked line closes as the hero leaves the top
+   (child keeps a one-shot line-rise on load, which is only a mount
+   micro-interaction; the mask itself is what rewinds with scroll) */
+@keyframes tti-hero-mask {
+  from {
+    clip-path: inset(0 0 0 0);
+  }
+  to {
+    clip-path: inset(0 0 100% 0);
+  }
+}
+.rv-mask {
+  overflow: clip;
+  display: block;
+  animation: tti-hero-mask linear both;
+  animation-timeline: scroll(root);
+  animation-range: 0vh 90vh;
+}
+.rv-mask > * {
+  display: block;
+  transform-origin: bottom;
+  animation: tti-rise 1s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+/* metadata / copy / CTA: fade and settle back as the top drives away */
+@keyframes tti-hero-retreat {
+  from {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  to {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+}
+.tt-hero-phase {
+  will-change: opacity, transform;
+  animation: tti-hero-retreat linear both;
+  animation-timeline: scroll(root);
+  animation-range: 0vh 75vh;
+}
+
+/* scroll: hero parallax (moves through first viewport, keep layer-slow) */
+@keyframes tti-parallax {
+  from {
+    transform: translateY(-2.5%) scale(1.18);
+  }
+  to {
+    transform: translateY(7%) scale(1.16);
+  }
+}
+.tt-parallax {
+  will-change: transform;
+  animation: tti-parallax linear;
+  animation-timeline: scroll(root);
+  animation-range: 0 100vh;
+}
+
+/* load: masked line rise (hero headline) - used by .rv-mask > * children;
+   the .rv-mask wrapper itself is scroll-driven in the HERO rewind block */
+@keyframes tti-rise {
+  from {
+    transform: translateY(112%);
+  }
+  to {
+    transform: translateY(0);
+  }
+}
+
+/* scroll: masked-line reveal for in-view headings. The mask lives on the
+   WRAPPER (.dt-title) itself so its scroll-progress is not trapped by an
+   overflow: clip ancestor on the line inside. */
+@keyframes tti-title-mask {
+  from {
+    clip-path: inset(0 0 100% 0);
+  }
+  to {
+    clip-path: inset(0 0 0 0);
+  }
+}
+.dt-title {
+  display: block;
+  will-change: clip-path;
+}
+.dt-title-line {
+  display: block;
+}
+.dt-stack .dt-title {
+  animation: tti-title-mask linear both;
+  animation-timeline: --stack-view;
+  animation-range: entry 4% entry 30%;
+}
+.dt-row-otr .dt-title {
+  animation: tti-title-mask linear both;
+  animation-timeline: --otr-view;
+  animation-range: entry 4% entry 30%;
+}
+.dt-row-reg .dt-title {
+  animation: tti-title-mask linear both;
+  animation-timeline: --reg-view;
+  animation-range: entry 4% entry 30%;
+}
+.dt-row-loc .dt-title {
+  animation: tti-title-mask linear both;
+  animation-timeline: --loc-view;
+  animation-range: entry 4% entry 30%;
+}
+.dt-row-ded .dt-title {
+  animation: tti-title-mask linear both;
+  animation-timeline: --ded-view;
+  animation-range: entry 4% entry 30%;
+}
+.dt-row-why .dt-title {
+  animation: tti-title-mask linear both;
+  animation-timeline: --why-view;
+  animation-range: entry 4% entry 30%;
+}
+
+/* scroll: stat number masked reveal */
+@keyframes tti-num-mask {
+  from {
+    clip-path: inset(0 0 100% 0);
+  }
+  to {
+    clip-path: inset(0 0 0 0);
+  }
+}
+.dt-num {
+  display: inline-block;
+  will-change: clip-path;
+}
+.dt-num > * {
+  display: block;
+}
+.dt-band .dt-num {
+  animation: tti-num-mask linear both;
+  animation-timeline: --band-view;
+  animation-range: entry 10% entry 55%;
+}
+
+/* scroll: generic growing hairline (also bridges section boundaries) */
+.dt-line {
+  transform-origin: left;
+  animation: tti-rail-x linear both;
+}
+.dt-band .dt-line {
+  animation-timeline: --band-view;
+  animation-range: entry 20% entry 85%;
+}
+
+/* scroll: editorial photo clip+settle reveal */
+@keyframes tti-clip {
+  from {
+    clip-path: inset(12% 6% 12% 6%);
+    transform: scale(1.08);
+  }
+  to {
+    clip-path: inset(0 0 0 0);
+    transform: scale(1);
+  }
+}
+.dt-clip {
+  will-change: clip-path, transform;
+  animation: tti-clip linear both;
+  animation-timeline: view();
+  animation-range: cover 5% cover 60%;
+}
+
+/* scroll: Local out-to-home travel dot follows the rail */
+@keyframes tti-lap-travel {
+  0% {
+    transform: translateX(0);
+    opacity: 0;
+  }
+  6% {
+    opacity: 1;
+  }
+  40% {
+    transform: translateX(calc(100cqw * 0.34));
+    opacity: 1;
+  }
+  62% {
+    transform: translateX(calc(100cqw * 0.72));
+    opacity: 1;
+  }
+  92%,
+  100% {
+    transform: translateX(100cqw);
+    opacity: 1;
+  }
+}
+.lap-travel {
+  animation: tti-lap-travel linear both;
+  animation-timeline: --loc-view;
+  animation-range: entry 15% entry 92%;
+}
+
+/* scroll: Local home node locks in as the route reaches the end */
+@keyframes tti-home-in {
+  0%,
+  55% {
+    opacity: 0;
+    transform: scale(0.6);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+.lap-home {
+  animation: tti-home-in linear both;
+  animation-timeline: --loc-view;
+  animation-range: entry 60% entry 100%;
+}
+
+/* scroll: Dedicated ring content locks into place */
+@keyframes tti-lock {
+  from {
+    transform: scale(0.9);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+.dt-lock {
+  will-change: transform, opacity;
+  transform-origin: center;
+  animation: tti-lock linear both;
+  animation-timeline: --ded-view;
+  animation-range: entry 60% entry 95%;
+}
+
+/* ---------- LOAD family (hero) ---------- */
+
+.tt-route {
+  stroke-dasharray: 2000 2200;
+  animation: tti-route-draw 1.7s cubic-bezier(0.6, 0.05, 0.2, 1) forwards;
+}
+.tt-node {
+  fill: var(--color-hazard);
+  fill-opacity: 0;
+  animation: tti-node-on 0.5s ease forwards;
+}
+.tt-zoom {
+  animation: tti-zoom 1.6s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+.tt-rail {
+  transform-origin: left;
+  animation: tti-rail-x 1s cubic-bezier(0.6, 0.05, 0.2, 1) both;
+}
+.tt-pulse {
+  transform-origin: center;
+  animation: tti-pulse 2.4s ease-in-out infinite;
+}
+
+/* ---------- SCROLL family (below the fold) ---------- */
+
+@layer components {
+  /* lane view-timelines */
+  .dt-row-otr {
+    view-timeline-name: --otr-view;
+    view-timeline-axis: block;
+  }
+  .dt-row-reg {
+    view-timeline-name: --reg-view;
+    view-timeline-axis: block;
+  }
+  .dt-row-loc {
+    view-timeline-name: --loc-view;
+    view-timeline-axis: block;
+  }
+  .dt-row-ded {
+    view-timeline-name: --ded-view;
+    view-timeline-axis: block;
+  }
+  .dt-row-why {
+    view-timeline-name: --why-view;
+    view-timeline-axis: block;
+  }
+  .dt-band {
+    view-timeline-name: --band-view;
+    view-timeline-axis: block;
+  }
+  .dt-stack {
+    view-timeline-name: --stack-view;
+    view-timeline-axis: block;
+  }
+
+  /* generic image + copy reveals */
+  .dt-zoom {
+    animation: tti-zoom linear both;
+    animation-timeline: view();
+    animation-range: cover 0 cover 100%;
+  }
+  .dt-copy {
+    animation: tti-copy-in linear both;
+  }
+  .dt-band .dt-copy {
+    animation-timeline: --band-view;
+    animation-range: cover 0% cover 40%;
+  }
+  .dt-stack .dt-copy {
+    animation-timeline: --stack-view;
+    animation-range: cover 0% cover 40%;
+  }
+  .dt-row-otr .dt-copy {
+    animation-timeline: --otr-view;
+    animation-range: cover 0% cover 40%;
+  }
+  .dt-row-reg .dt-copy {
+    animation-timeline: --reg-view;
+    animation-range: cover 0% cover 40%;
+  }
+  .dt-row-loc .dt-copy {
+    animation-timeline: --loc-view;
+    animation-range: cover 0% cover 40%;
+  }
+  .dt-row-ded .dt-copy {
+    animation-timeline: --ded-view;
+    animation-range: cover 0% cover 40%;
+  }
+  .dt-row-why .dt-copy {
+    animation-timeline: --why-view;
+    animation-range: cover 0% cover 40%;
+  }
+  .dt-rail {
+    transform-origin: left;
+    animation: tti-rail-x linear both;
+    animation-timeline: view();
+    animation-range: cover 0 cover 100%;
+  }
+
+  /* OTR: long route draw */
+  .dt-route-otr {
+    stroke-dasharray: 2000 2200;
+    animation: tti-route-draw linear both;
+    animation-timeline: --otr-view;
+    animation-range: entry 10% entry 90%;
+  }
+  .dt-node-otr {
+    fill: var(--color-hazard);
+    fill-opacity: 0;
+    animation: tti-node-on linear both;
+    animation-timeline: --otr-view;
+    animation-range: entry 50% entry 90%;
+  }
+
+  /* Regional: loop route draw */
+  .dt-route-reg {
+    stroke-dasharray: 2000 2200;
+    animation: tti-route-draw linear both;
+    animation-timeline: --reg-view;
+    animation-range: entry 15% entry 85%;
+  }
+  .dt-node-reg {
+    fill: var(--color-hazard);
+    fill-opacity: 0;
+    animation: tti-node-on linear both;
+    animation-timeline: --reg-view;
+    animation-range: entry 55% entry 90%;
+  }
+
+  /* Local: home-time rail */
+  .dt-rail-loc {
+    transform-origin: left;
+    animation: tti-rail-x linear both;
+    animation-timeline: --loc-view;
+    animation-range: entry 30% entry 90%;
+  }
+
+  /* Dedicated: sealed ring draw */
+  .dt-ring-ded {
+    stroke-dasharray: 2000 2200;
+    animation: tti-route-draw linear both;
+    animation-timeline: --ded-view;
+    animation-range: entry 25% entry 90%;
+  }
+
+  /* Why band: hairline grows */
+  .dt-rail-why {
+    transform-origin: left;
+    animation: tti-rail-x linear both;
+    animation-timeline: --why-view;
+    animation-range: entry 20% entry 85%;
+  }
+}
+
+/* ---------- reduced motion ---------- */
+
+@media (prefers-reduced-motion: reduce) {
+  .tt-hero-stage,
+  .tt-hero-phase,
+  .rv-mask,
+  .tt-parallax,
+  .tt-route,
+  .tt-node,
+  .tt-zoom,
+  .tt-rail,
+  .tt-pulse,
+  .dt-zoom,
+  .dt-copy,
+  .dt-rail,
+  .dt-title,
+  .dt-title-line,
+  .dt-num,
+  .rv-mask > *,
+  .dt-num > *,
+  .dt-line,
+  .dt-clip,
+  .lap-travel,
+  .lap-home,
+  .dt-lock,
+  .dt-route-otr,
+  .dt-node-otr,
+  .dt-route-reg,
+  .dt-node-reg,
+  .dt-rail-loc,
+  .dt-ring-ded,
+  .dt-rail-why {
+    animation: none !important;
+  }
+  .tt-node,
+  .dt-node-otr,
+  .dt-node-reg {
+    fill-opacity: 1;
+  }
+  .tt-route,
+  .dt-route-otr,
+  .dt-route-reg,
+  .dt-ring-ded {
+    stroke-dashoffset: 0;
+  }
+}
