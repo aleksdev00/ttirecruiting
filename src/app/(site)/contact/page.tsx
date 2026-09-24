@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { BRAND } from "@/lib/jobs";
+import { CONTACT_EMAIL, SITE_URL } from "@/lib/site";
 import { V3PageHeader } from "@/components/site/v3-page-header";
 
 export const metadata: Metadata = {
@@ -7,6 +8,13 @@ export const metadata: Metadata = {
   description:
     "Reach the TTI Recruiting hiring desk out of Kansas City, MO by phone, email, or by sending an application.",
   alternates: { canonical: "/contact" },
+  openGraph: {
+    title: "Contact | TTI Recruiting",
+    description:
+      "Reach the TTI Recruiting hiring desk out of Kansas City, MO by phone, email, or by sending an application.",
+    url: `${SITE_URL}/contact`,
+    type: "website",
+  },
 };
 
 export default function ContactPage() {
@@ -39,24 +47,24 @@ export default function ContactPage() {
                   Call
                 </span>
                 <span className="font-display text-2xl uppercase leading-none tracking-tight sm:text-3xl transition-colors group-hover:text-signal-deep">
-                  {BRAND.phone}
+                  {BRAND.phone.split(" (placeholder")[0]}
                 </span>
               </a>
               <a
-                href={`mailto:${BRAND.email}`}
+                href={`mailto:${CONTACT_EMAIL}`}
                 className="group flex flex-wrap items-baseline gap-x-4 gap-y-1"
               >
                 <span className="font-ledger text-[10px] font-semibold uppercase tracking-[0.3em] text-ink-faint">
                   Email
                 </span>
                 <span className="font-display text-2xl uppercase leading-none tracking-tight sm:text-3xl transition-colors group-hover:text-signal-deep">
-                  {BRAND.email}
+                  {CONTACT_EMAIL}
                 </span>
               </a>
             </div>
             <p className="mt-4 font-ledger text-[10px] font-semibold uppercase tracking-[0.2em] text-ink-faint">
-              Phone and email are placeholders. Confirmed lines required before
-              launch.
+              The phone line and yard hours are placeholders. The email above is
+              the active desk inbox.
             </p>
           </div>
 
@@ -64,15 +72,15 @@ export default function ContactPage() {
             <p className="font-ledger text-[10px] font-semibold uppercase tracking-[0.3em] text-signal-deep">
               The yard
             </p>
-            <address className="mt-4 text-lg leading-relaxed not-italic text-ink/80">
+            <address className="mt-4 text-lg leading-relaxed not-italic text-ink-muted">
               {BRAND.address.line1}
               <br />
               {BRAND.address.city}, {BRAND.address.state} {BRAND.address.zip}
             </address>
-            <dl className="mt-6 space-y-3 border-t border-ink/15 pt-5 font-ledger text-[11px] font-semibold uppercase tracking-[0.18em] text-ink/80">
+            <dl className="mt-6 space-y-3 border-t border-ink/15 pt-5 font-ledger text-[11px] font-semibold uppercase tracking-[0.18em] text-ink-muted">
               <div className="flex justify-between gap-4">
                 <dt className="text-ink-faint">Hours</dt>
-                <dd className="text-right">{BRAND.hours}</dd>
+                <dd className="text-right">{BRAND.hours.split(" (placeholder")[0]}</dd>
               </div>
               <div className="flex justify-between gap-4">
                 <dt className="text-ink-faint">Platform</dt>

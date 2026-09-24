@@ -11,7 +11,7 @@ export default function SiteNotFound() {
           Wrong exit,{" "}
           <span className="text-signal-deep">driver.</span>
         </h1>
-        <p className="mt-6 max-w-xl text-lg leading-relaxed text-ink/70">
+        <p className="mt-6 max-w-xl text-lg leading-relaxed text-ink-muted">
           That page pulled off the grid. Here is the way back to the terminal.
         </p>
         <div className="mt-8 flex flex-wrap gap-4">

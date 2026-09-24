@@ -101,7 +101,7 @@ export function V3Quiz({
                       .
                     </span>
                   </span>
-                  <span className="mt-3 block text-sm leading-relaxed text-ink/70">
+                  <span className="mt-3 block text-sm leading-relaxed text-ink-muted">
                     {t.blurb}
                   </span>
                 </button>
@@ -127,7 +127,7 @@ export function V3Quiz({
                       .
                     </span>
                   </span>
-                  <span className="mt-3 block text-sm leading-relaxed text-ink/70">
+                  <span className="mt-3 block text-sm leading-relaxed text-ink-muted">
                     {o.blurb}
                   </span>
                 </button>
@@ -161,7 +161,7 @@ export function V3Quiz({
           {current.name === "cdl" ? (
             <div className="max-w-md">
               <fieldset className="space-y-3">
-                <legend className="font-ledger text-[10px] font-semibold uppercase tracking-[0.3em] text-ink/70">
+                <legend className="font-ledger text-[10px] font-semibold uppercase tracking-[0.3em] text-ink-muted">
                   Your CDL class
                 </legend>
                 <div className="grid grid-cols-2 gap-3 sm:grid-cols-4">
@@ -186,12 +186,13 @@ export function V3Quiz({
               <div className="mt-8">
                 <label
                   htmlFor="quiz-experience"
-                  className="font-ledger text-[10px] font-semibold uppercase tracking-[0.3em] text-ink/70"
+                  className="font-ledger text-[10px] font-semibold uppercase tracking-[0.3em] text-ink-muted"
                 >
                   Years of driving experience
                 </label>
                 <input
                   id="quiz-experience"
+                  name="experienceYears"
                   type="number"
                   min={0}
                   max={60}
@@ -199,7 +200,7 @@ export function V3Quiz({
                   onChange={(e) =>
                     set("experienceYears", Number(e.target.value) || 0)
                   }
-                  className="mt-2 block h-12 w-32 border border-ink/30 bg-paper px-3 font-display text-2xl tracking-tight focus:border-signal-deep focus:outline-none"
+                  className="mt-2 block h-12 w-32 border border-ink/30 bg-paper px-3 font-display text-2xl tracking-tight focus:border-signal-deep"
                 />
               </div>
             </div>
@@ -246,13 +247,19 @@ export function V3Quiz({
   );
 }
 
+const FIT_TIER: Record<"strong" | "medium" | "weak", string> = {
+  strong: "text-signal-deep",
+  medium: "text-ink",
+  weak: "text-ink-faint",
+};
+
 function QuizResults({ answers }: { answers: QuizAnswers }) {
   const matches = React.useMemo(() => matchJobs(answers, JOBS), [answers]);
   const top = matches.slice(0, 3);
 
   return (
     <div>
-      <p className="max-w-2xl text-lg leading-relaxed text-ink/70">
+      <p className="max-w-2xl text-lg leading-relaxed text-ink-muted">
         Ranked against our open lanes out of the Kansas City, MO terminal.
         Score reflects how closely a lane lines up with what you told us.
       </p>
@@ -272,11 +279,8 @@ function QuizResults({ answers }: { answers: QuizAnswers }) {
                 </span>
                 <span
                   className={
-                    strength === "strong"
-                      ? "font-ledger text-[10px] font-semibold uppercase tracking-[0.3em] text-[#3a5c44]"
-                      : strength === "medium"
-                        ? "font-ledger text-[10px] font-semibold uppercase tracking-[0.3em] text-ink-faint"
-                        : "font-ledger text-[10px] font-semibold uppercase tracking-[0.3em] text-ink-faint"
+                    "font-ledger text-[10px] font-semibold uppercase tracking-[0.3em] " +
+                    FIT_TIER[strength]
                   }
                 >
                   {strength.toUpperCase()} FIT
@@ -296,7 +300,7 @@ function QuizResults({ answers }: { answers: QuizAnswers }) {
                 </span>
               </div>
 
-              <p className="mt-3 max-w-2xl text-sm leading-relaxed text-ink/70">
+              <p className="mt-3 max-w-2xl text-sm leading-relaxed text-ink-muted">
                 {m.job.summary}
               </p>
 
@@ -304,7 +308,7 @@ function QuizResults({ answers }: { answers: QuizAnswers }) {
                 {m.reasons.map((r) => (
                   <span
                     key={r}
-                    className="inline-flex items-center gap-2 font-ledger text-[10px] font-semibold uppercase tracking-[0.2em] text-ink/70"
+                    className="inline-flex items-center gap-2 font-ledger text-[10px] font-semibold uppercase tracking-[0.2em] text-ink-muted"
                   >
                     <span
                       aria-hidden
@@ -320,10 +324,10 @@ function QuizResults({ answers }: { answers: QuizAnswers }) {
                   {pct}% aligned
                 </span>
                 <Link
-                  href={`/apply/${m.job.slug}`}
+                  href="/#quick-apply"
                   className="group inline-flex h-11 items-center justify-center gap-3 bg-signal px-6 font-ledger text-xs font-semibold uppercase tracking-[0.2em] text-paper transition-colors hover:bg-signal-deep"
                 >
-                  Apply
+                  Quick apply
                   <span aria-hidden className="transition-transform group-hover:translate-x-1">
                     &rarr;
                   </span>
@@ -340,7 +344,7 @@ function QuizResults({ answers }: { answers: QuizAnswers }) {
             No open lanes fit those choices
             <span className="text-signal-deep">.</span>
           </p>
-          <p className="mt-3 max-w-md text-sm leading-relaxed text-ink/70">
+          <p className="mt-3 max-w-md text-sm leading-relaxed text-ink-muted">
             Try a different combination, or contact recruiting and we will let
             you know when a lane opens up.
           </p>

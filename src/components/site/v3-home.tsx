@@ -1,7 +1,9 @@
 import Image from "next/image";
 import Link from "next/link";
 import { BRAND, DRIVING_TYPES, JOBS, QUIZ_PATHS } from "@/lib/jobs";
+import { FULL_APPLICATION_URL } from "@/lib/site";
 import { V3Board } from "@/components/site/v3-board";
+import { V3QuickApply } from "@/components/site/v3-quick-apply";
 
 const MAST_IMG =
   "https://images.unsplash.com/photo-1516319915504-015b432d407c?auto=format&fit=crop&w=1800&q=80";
@@ -48,14 +50,23 @@ export default function V3Home() {
               </h1>
 
               <p className="v3-fade v3-d2 mt-7 max-w-md text-lg leading-relaxed text-ink">
-                Four ways to work the road. Pick the fit, know the freight, and
-                let the desk handle the legwork.
+                Tell us what you're looking for. We'll review your profile and
+                contact you when we find a matching opportunity.
               </p>
 
-              <div className="v3-fade v3-d3 mt-9 flex flex-wrap items-center gap-4">
+              <div className="v3-fade v3-d3 mt-9 flex flex-col gap-4 sm:flex-row sm:flex-wrap sm:items-center">
+                <Link
+                  href="#quick-apply"
+                  className="group inline-flex h-14 w-full items-center justify-center gap-3 bg-signal-deep px-9 font-ledger text-xs font-semibold uppercase tracking-[0.2em] text-paper transition-colors hover:bg-ink hover:text-paper sm:w-auto"
+                >
+                  Quick apply
+                  <span aria-hidden className="transition-transform group-hover:translate-x-1">
+                    &rarr;
+                  </span>
+                </Link>
                 <Link
                   href="/jobs"
-                  className="group inline-flex h-14 items-center justify-center gap-3 bg-signal-deep px-9 font-ledger text-xs font-semibold uppercase tracking-[0.2em] text-paper transition-colors hover:bg-ink hover:text-paper"
+                  className="group inline-flex h-14 w-full items-center justify-center gap-3 border border-ink/40 px-9 font-ledger text-xs font-semibold uppercase tracking-[0.2em] text-ink transition-colors hover:bg-ink hover:text-paper sm:w-auto"
                 >
                   See open lanes
                   <span aria-hidden className="transition-transform group-hover:translate-x-1">
@@ -64,9 +75,9 @@ export default function V3Home() {
                 </Link>
                 <Link
                   href={QUIZ_PATHS.start}
-                  className="group inline-flex h-14 items-center justify-center gap-3 border border-ink/40 px-9 font-ledger text-xs font-semibold uppercase tracking-[0.2em] text-ink transition-colors hover:bg-ink hover:text-paper"
+                  className="group inline-flex h-14 w-full items-center justify-center gap-3 border border-ink/40 px-9 font-ledger text-xs font-semibold uppercase tracking-[0.2em] text-ink transition-colors hover:bg-ink hover:text-paper sm:w-auto"
                 >
-                  Two-minute fit quiz
+                  Fit quiz
                   <span aria-hidden className="transition-transform group-hover:translate-x-1">
                     &rarr;
                   </span>
@@ -123,6 +134,9 @@ export default function V3Home() {
         </div>
       </section>
 
+      {/* ==================== QUICK APPLY / LEAD FORM ==================== */}
+      <V3QuickApply />
+
       {/* ==================== FRONT SHEET / THE LEDGER ==================== */}
       <section className="v3-sheet border-b border-ink/15 bg-paper-deep text-ink">
         <div className="mx-auto grid w-full max-w-[1440px] gap-14 px-4 py-20 sm:px-6 lg:grid-cols-12 lg:px-10 lg:py-28">
@@ -133,7 +147,7 @@ export default function V3Home() {
             <h2 className="v3-word mt-5 font-display text-[clamp(2.4rem,5.2vw,4.75rem)] uppercase leading-[0.88] tracking-tight">
               We do the legwork<span className="text-signal-deep">.</span>
             </h2>
-            <p className="v3-fact mt-7 max-w-md text-lg leading-relaxed text-ink/70">
+            <p className="v3-fact mt-7 max-w-md text-lg leading-relaxed text-ink-muted">
               No forced miles, no mystery dispatches. You see the freight, home
               time, and pay on every load before you commit to the run.
             </p>
@@ -155,7 +169,7 @@ export default function V3Home() {
                     <span className="inline-block h-2 w-2 bg-signal-deep" aria-hidden="true" />
                     {k}
                   </span>
-                  <span className="text-ink/65">{v}</span>
+                  <span className="text-ink-muted">{v}</span>
                 </li>
               ))}
             </ul>
@@ -165,7 +179,7 @@ export default function V3Home() {
             <div className="h-full border border-ink/20">
               {(
                 [
-                  [String(JOBS.length), "Open positions on the board"],
+                  [String(JOBS.length), "Opportunity postings on the board"],
                   [String(DRIVING_TYPES.length), "Active driving lanes"],
                   ["03", "Equipment types / Flatbed / Reefer / Dry Van"],
                   ["04", "Coverage / " + BRAND.region],
@@ -193,6 +207,82 @@ export default function V3Home() {
         </div>
       </section>
 
+      {/* ==================== HOW MATCHING WORKS ==================== */}
+      <section className="v3-sheet border-b border-ink/15 bg-paper text-ink">
+        <div className="mx-auto grid w-full max-w-[1440px] gap-14 px-4 py-20 sm:px-6 lg:grid-cols-12 lg:px-10 lg:py-28">
+          <div className="lg:col-span-5">
+            <p className="v3-word font-ledger text-xs font-semibold uppercase tracking-[0.3em] text-signal-deep">
+              How matching works
+            </p>
+            <h2 className="v3-word mt-5 font-display text-[clamp(2.2rem,4.6vw,4.25rem)] uppercase leading-[0.88] tracking-tight">
+              Apply once.{" "}
+              <span className="text-signal-deep">We do the matching.</span>
+            </h2>
+            <p className="v3-fact mt-7 max-w-md text-lg leading-relaxed text-ink-muted">
+              One application is enough. Tell us what you're looking for, and
+              we do the calling around.
+            </p>
+          </div>
+
+          <div className="lg:col-span-7">
+            <ol className="v3-fact space-y-0 border-t border-ink/15">
+              {(
+                [
+                  [
+                    "01",
+                    "Tell us what you want",
+                    "Route, home time, equipment, and how you like to work. Nothing else is required to start.",
+                  ],
+                  [
+                    "02",
+                    "We review your profile",
+                    "Experience, location, preferred route, home time, and employment type against current carrier opportunities.",
+                  ],
+                  [
+                    "03",
+                    "We call you on a match",
+                    "Recruiting reaches out directly when a potentially suitable opportunity comes up. No match, no pressure.",
+                  ],
+                ] as const
+              ).map(([i, k, v]) => (
+                <li
+                  key={i}
+                  className="grid grid-cols-[2.5rem_1fr] items-baseline gap-4 border-b border-ink/15 py-6 last:border-b-0 sm:py-7"
+                >
+                  <span className="font-ledger text-[11px] font-semibold tracking-[0.2em] text-ink-faint">
+                    {i}
+                  </span>
+                  <div className="flex flex-col gap-1 sm:flex-row sm:items-baseline sm:justify-between">
+                    <span className="font-display text-xl uppercase leading-none tracking-tight sm:text-2xl">
+                      {k}
+                    </span>
+                    <span className="max-w-[36ch] text-sm leading-relaxed text-ink-muted">
+                      {v}
+                    </span>
+                  </div>
+                </li>
+              ))}
+            </ol>
+
+            <div className="mt-8 flex flex-wrap items-center gap-4">
+              <Link
+                href="#quick-apply"
+                className="group inline-flex h-14 items-center justify-center gap-3 bg-signal-deep px-9 font-ledger text-xs font-semibold uppercase tracking-[0.2em] text-paper transition-colors hover:bg-ink hover:text-paper"
+              >
+                Quick apply
+                <span aria-hidden className="transition-transform group-hover:translate-x-1">
+                  &rarr;
+                </span>
+              </Link>
+              <p className="max-w-[24ch] font-ledger text-[10px] font-semibold uppercase tracking-[0.2em] text-ink-faint">
+                No guarantee of placement -- only a call when there is a real
+                fit.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* ==================== THE BOARD ==================== */}
       <V3Board />
 
@@ -214,8 +304,8 @@ export default function V3Home() {
               </span>
             </h2>
             <p className="v3-fade mt-7 max-w-md text-lg leading-relaxed text-paper/70">
-              One recruiting desk working the market for you, end to end. Ask
-              about OTR, regional, local, or dedicated work.
+              One recruiting desk working the market for you, end to end. Tell
+              us what you're looking for and we call when there is a real fit.
             </p>
           </div>
 
@@ -246,10 +336,10 @@ export default function V3Home() {
               ))}
             </ul>
 
-            <div className="v3-fade mt-9 flex flex-wrap items-center gap-4">
+            <div className="v3-fade mt-9 flex flex-col gap-4 sm:flex-row sm:flex-wrap sm:items-center">
               <Link
                 href={QUIZ_PATHS.start}
-                className="group inline-flex h-14 items-center justify-center gap-3 bg-signal px-9 font-ledger text-xs font-semibold uppercase tracking-[0.2em] text-paper transition-colors hover:bg-signal-deep"
+                className="group inline-flex h-14 w-full items-center justify-center gap-3 bg-signal px-9 font-ledger text-xs font-semibold uppercase tracking-[0.2em] text-paper transition-colors hover:bg-signal-deep sm:w-auto"
               >
                 Take the two-minute fit quiz
                 <span aria-hidden className="transition-transform group-hover:translate-x-1">
@@ -257,15 +347,28 @@ export default function V3Home() {
                 </span>
               </Link>
               <Link
-                href="/apply"
-                className="group inline-flex h-14 items-center justify-center gap-3 border border-paper/40 px-9 font-ledger text-xs font-semibold uppercase tracking-[0.2em] text-paper transition-colors hover:bg-paper hover:text-ink"
+                href="#quick-apply"
+                className="group inline-flex h-14 w-full items-center justify-center gap-3 border border-paper/40 px-9 font-ledger text-xs font-semibold uppercase tracking-[0.2em] text-paper transition-colors hover:bg-paper hover:text-ink sm:w-auto"
               >
-                Apply now
+                Quick apply
                 <span aria-hidden className="transition-transform group-hover:translate-x-1">
                   &rarr;
                 </span>
               </Link>
             </div>
+
+            <p className="v3-fade mt-8 font-ledger text-[10px] font-semibold uppercase tracking-[0.22em] text-paper/50">
+              Already matched by recruiting?{" "}
+              <Link
+                href={FULL_APPLICATION_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="underline underline-offset-4 transition-colors hover:text-signal"
+              >
+                Complete the full application
+              </Link>
+              .
+            </p>
           </div>
         </div>
       </section>

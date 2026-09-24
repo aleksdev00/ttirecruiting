@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { BRAND } from "@/lib/jobs";
+import { CONTACT_EMAIL } from "@/lib/site";
 
 export function V3Footer() {
   return (
@@ -16,7 +17,7 @@ export function V3Footer() {
             <p className="mt-3 font-ledger text-[11px] font-semibold uppercase tracking-[0.24em] text-ink-faint">
               {BRAND.tagline}
             </p>
-            <p className="mt-6 max-w-[26ch] text-sm leading-relaxed text-ink/70">
+            <p className="mt-6 max-w-[26ch] text-sm leading-relaxed text-ink-muted">
               CDL driver placement out of {BRAND.address.city}, {BRAND.address.state}. {BRAND.region}.
             </p>
           </div>
@@ -27,6 +28,7 @@ export function V3Footer() {
             </p>
             <ul className="mt-4 space-y-2">
               {[
+                { href: "/#quick-apply", label: "Quick apply" },
                 { href: "/jobs", label: "Jobs" },
                 { href: "/about", label: "About" },
                 { href: "/contact", label: "Contact" },
@@ -36,7 +38,7 @@ export function V3Footer() {
                 <li key={l.href}>
                   <Link
                     href={l.href}
-                    className="inline-flex min-h-11 items-center font-ledger text-xs font-semibold uppercase tracking-[0.18em] text-ink/70 transition-colors hover:text-signal-deep"
+                    className="inline-flex min-h-11 items-center font-ledger text-xs font-semibold uppercase tracking-[0.18em] text-ink-muted transition-colors hover:text-signal-deep"
                   >
                     {l.label}
                   </Link>
@@ -49,34 +51,39 @@ export function V3Footer() {
             <p className="font-ledger text-[10px] font-semibold uppercase tracking-[0.3em] text-ink-faint">
               Wire the yard
             </p>
-            <address className="mt-4 text-sm not-italic leading-relaxed text-ink/70">
+            <address className="mt-4 text-sm not-italic leading-relaxed text-ink-muted">
               {BRAND.address.line1}
               <br />
               {BRAND.address.city}, {BRAND.address.state} {BRAND.address.zip}
             </address>
+            <a
+              href={`mailto:${CONTACT_EMAIL}`}
+              className="mt-4 inline-flex min-h-11 items-center font-ledger text-xs font-semibold uppercase tracking-[0.18em] text-ink-muted transition-colors hover:text-signal-deep"
+            >
+              {CONTACT_EMAIL}
+            </a>
           </div>
 
           <div>
             <p className="font-ledger text-[10px] font-semibold uppercase tracking-[0.3em] text-ink-faint">
               Placard
             </p>
-            <p className="mt-4 font-ledger text-xs leading-relaxed text-ink/70">
-              {BRAND.dot}
+            <p className="mt-4 font-ledger text-xs leading-relaxed text-ink-muted">
+              {BRAND.dot.split(" (placeholder")[0]}
               <br />
-              {BRAND.mc}
+              {BRAND.mc.split(" (placeholder")[0]}
             </p>
             <p className="mt-4 text-xs leading-relaxed text-ink-faint">
-              Placeholder dot line. Confirm DOT and MC numbers before publishing.
+              DOT and MC figures pending confirmation before publishing.
             </p>
           </div>
         </div>
 
         <div className="mt-12 flex flex-col gap-2 border-t border-ink/15 pt-5 font-ledger text-[10px] font-semibold uppercase tracking-[0.2em] text-ink-faint sm:flex-row sm:items-center sm:justify-between">
-          <p>
-            Copyright {BRAND.name}. All rights reserved. {BRAND.est}
-          </p>
+          <p>Copyright {BRAND.name}. All rights reserved.</p>
           <p className="text-ink-faint">
-            This site is a demo; hiring terms are placeholders.
+            Pay, miles, home time, and DOT/MC figures shown here are
+            placeholders pending verified hiring terms.
           </p>
         </div>
       </div>

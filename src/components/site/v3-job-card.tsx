@@ -28,9 +28,9 @@ export function V3JobCard({ job }: { job: JobPosting }) {
         {job.title}
       </p>
 
-      <p className="max-w-prose text-sm leading-relaxed text-ink/70">{job.summary}</p>
+      <p className="max-w-prose text-sm leading-relaxed text-ink-muted">{job.summary}</p>
 
-      <dl className="mt-auto space-y-2 border-t border-ink/15 pt-4 font-ledger text-[11px] font-semibold uppercase tracking-[0.18em] text-ink/80">
+      <dl className="mt-auto space-y-2 border-t border-ink/15 pt-4 font-ledger text-[11px] font-semibold uppercase tracking-[0.18em] text-ink-muted">
         <div className="flex justify-between gap-4">
           <dt className="text-ink-faint">Home time</dt>
           <dd>{job.homeTime.label}</dd>
@@ -41,10 +41,7 @@ export function V3JobCard({ job }: { job: JobPosting }) {
         </div>
         <div className="flex justify-between gap-4">
           <dt className="text-ink-faint">Pay</dt>
-          <dd>
-            {job.pay.payTypeNote}
-            {job.pay.signOn > 0 ? ` / sign-on ${job.pay.signOn} (placeholder)` : ""}
-          </dd>
+          <dd>{job.pay.payTypeNote}</dd>
         </div>
       </dl>
 

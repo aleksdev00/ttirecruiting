@@ -18,7 +18,7 @@ export default function SiteError({
           That lane is{" "}
           <span className="text-signal-deep">down.</span>
         </h1>
-        <p className="mt-6 max-w-xl text-lg leading-relaxed text-ink/70">
+        <p className="mt-6 max-w-xl text-lg leading-relaxed text-ink-muted">
           Something went wrong while loading this page. Try again, or head
           back to safety.
         </p>

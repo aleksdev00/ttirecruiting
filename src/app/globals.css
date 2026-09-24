@@ -55,6 +55,7 @@
   /* V3 Dispatch tokens */
   --color-paper: var(--paper);
   --color-paper-deep: var(--paper-deep);
+  --color-ink-muted: var(--ink-muted);
   --color-ink-faint: var(--ink-faint);
   --color-signal: var(--signal);
   --color-signal-deep: var(--signal-deep);
@@ -112,6 +113,7 @@
   --signal: var(--hazard);        /* Tornik rubber-red, bright (on ink) */
   --signal-deep: var(--hazard-deep); /* Tornik red, AA-safe (on paper) */
   --paper-deep: oklch(0.912 0.012 87); /* recessed panel */
+  --ink-muted: oklch(0.42 0.012 52);   /* AA-safe muted reading text on paper */
   --ink-faint: oklch(0.47 0.012 52);   /* secondary text on paper */
 }
 

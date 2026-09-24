@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { DRIVING_TYPES, getJobsByType } from "@/lib/jobs";
+import { FULL_APPLICATION_URL } from "@/lib/site";
 import "./driving-types-motion.css";
 
 const IMG = {
@@ -69,7 +70,9 @@ function LaneOtr({
               </p>
             </div>
             <Link
-              href="/apply"
+              href={FULL_APPLICATION_URL}
+              target="_blank"
+              rel="noopener noreferrer"
               className="group inline-flex h-12 items-center justify-center gap-3 border border-hazard px-7 font-sans text-sm font-black uppercase tracking-[0.18em] text-hazard transition-colors hover:bg-hazard hover:text-ink"
             >
               See OTR roles
@@ -174,7 +177,9 @@ function LaneRegional({
               </p>
             </div>
             <Link
-              href="/apply"
+              href={FULL_APPLICATION_URL}
+              target="_blank"
+              rel="noopener noreferrer"
               className="group inline-flex h-12 items-center justify-center gap-3 border border-ink px-7 font-sans text-sm font-black uppercase tracking-[0.18em] text-ink transition-colors hover:bg-ink hover:text-bone"
             >
               Ask about regional lanes
@@ -223,7 +228,9 @@ function LaneLocal({
               </p>
             </div>
             <Link
-              href="/apply"
+              href={FULL_APPLICATION_URL}
+              target="_blank"
+              rel="noopener noreferrer"
               className="group inline-flex h-12 items-center justify-center gap-3 border border-bone/40 px-7 font-sans text-sm font-black uppercase tracking-[0.18em] text-bone transition-colors hover:bg-bone hover:text-ink"
             >
               See local roles
@@ -324,7 +331,9 @@ function LaneDedicated({
             </p>
           </div>
           <Link
-            href="/apply"
+            href={FULL_APPLICATION_URL}
+            target="_blank"
+            rel="noopener noreferrer"
             className="group inline-flex h-12 items-center justify-center gap-3 border border-ink px-7 font-sans text-sm font-black uppercase tracking-[0.18em] text-ink transition-colors hover:bg-ink hover:text-bone"
           >
             Talk about dedicated work

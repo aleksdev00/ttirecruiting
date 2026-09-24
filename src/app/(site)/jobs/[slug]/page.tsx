@@ -18,10 +18,7 @@ export async function generateMetadata(
   const { slug } = await params;
   const job = getJobBySlug(slug);
   if (!job) {
-    return {
-      title: "Lane not found",
-      robots: { index: false },
-    };
+    notFound();
   }
   return {
     title: job.title,
@@ -48,7 +45,6 @@ export default async function JobDetailPage({ params }: Props) {
     "@type": "JobPosting",
     title: job.title,
     description: job.summary,
-    validThrough: job.postingMeta.validThrough,
     employmentType: job.postingMeta.employmentType,
     hiringOrganization: {
       "@type": "Organization",
@@ -61,15 +57,6 @@ export default async function JobDetailPage({ params }: Props) {
         "@type": "PostalAddress",
         addressLocality: "Kansas City",
         addressRegion: "MO",
-      },
-    },
-    baseSalary: {
-      "@type": "MonetaryAmount",
-      currency: "USD",
-      value: {
-        "@type": "QuantitativeValue",
-        unitText: "WEEK",
-        value: job.pay.weekly,
       },
     },
   };

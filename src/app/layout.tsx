@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Anton, Archivo, IBM_Plex_Mono, Inter } from "next/font/google";
+import { SITE, SITE_URL } from "@/lib/site";
 import "./globals.css";
 
 const archivo = Archivo({
@@ -29,18 +30,24 @@ const plexMono = IBM_Plex_Mono({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL(SITE_URL),
   title: {
-    default: "TTI Recruiting | Flatbed. Regional. Reliable.",
+    default: SITE.defaultTitle,
     template: "%s | TTI Recruiting",
   },
-  description:
-    "TTI Recruiting helps CDL drivers find trucking opportunities in the U.S. market. OTR, regional, local, and dedicated lanes across the Midwest.",
-  keywords: ["CDL jobs", "truck driver jobs", "TTI Recruiting", "flatbed driver", "trucking opportunities"],
+  description: SITE.description,
+  keywords: SITE.keywords,
   openGraph: {
-    title: "TTI Recruiting | Flatbed. Regional. Reliable.",
+    title: SITE.defaultTitle,
     description: "Helping CDL drivers find trucking opportunities in the U.S. market.",
+    url: SITE_URL,
     type: "website",
     siteName: "TTI Recruiting",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: SITE.defaultTitle,
+    description: SITE.description,
   },
 };
 

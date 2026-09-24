@@ -7,6 +7,13 @@
 export const SITE_URL =
   process.env.NEXT_PUBLIC_SITE_URL ?? "https://ttirecruiting.com";
 
+export const FULL_APPLICATION_URL =
+  process.env.NEXT_PUBLIC_FULL_APPLICATION_URL ??
+  process.env.NEXT_PUBLIC_APPLY_URL ??
+  "https://apply.ttirecruiting.us";
+
+export const CONTACT_EMAIL = "info@ttirecruiting.us";
+
 export const SITE = {
   url: SITE_URL,
   name: "TTI Recruiting Inc.",

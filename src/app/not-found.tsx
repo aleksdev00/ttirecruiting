@@ -3,7 +3,7 @@ import Link from "next/link";
 export default function RootNotFound() {
   return (
     <div className="flex min-h-screen flex-col bg-paper text-ink">
-      <div className="mx-auto flex w-full max-w-[1440px] flex-1 flex-col justify-center px-4 py-16 sm:px-6 lg:px-10">
+      <main className="mx-auto flex w-full max-w-[1440px] flex-1 flex-col justify-center px-4 py-16 sm:px-6 lg:px-10">
         <p className="font-ledger text-xs font-semibold uppercase tracking-[0.3em] text-signal-deep">
           404 / Lost
         </p>
@@ -11,7 +11,7 @@ export default function RootNotFound() {
           Wrong exit,{" "}
           <span className="text-signal-deep">driver.</span>
         </h1>
-        <p className="mt-6 max-w-xl text-lg leading-relaxed text-ink/70">
+        <p className="mt-6 max-w-xl text-lg leading-relaxed text-ink-muted">
           That page pulled off the grid. Here is the way back to the terminal.
         </p>
         <div className="mt-8 flex flex-wrap gap-4">
@@ -22,7 +22,7 @@ export default function RootNotFound() {
             Home
           </Link>
         </div>
-      </div>
+      </main>
     </div>
   );
 }

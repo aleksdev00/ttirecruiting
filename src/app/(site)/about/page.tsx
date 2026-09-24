@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { BRAND } from "@/lib/jobs";
+import { SITE_URL } from "@/lib/site";
 import { V3PageHeader } from "@/components/site/v3-page-header";
 
 export const metadata: Metadata = {
@@ -7,6 +8,13 @@ export const metadata: Metadata = {
   description:
     "TTI Recruiting is a CDL driver placement operation out of Kansas City, MO -- flatbed, regional, and reliable lanes.",
   alternates: { canonical: "/about" },
+  openGraph: {
+    title: "About | TTI Recruiting",
+    description:
+      "TTI Recruiting is a CDL driver placement operation out of Kansas City, MO -- flatbed, regional, and reliable lanes.",
+    url: `${SITE_URL}/about`,
+    type: "website",
+  },
 };
 
 const PRINCIPLES = [
@@ -48,7 +56,7 @@ export default function AboutPage() {
               <p className="font-ledger text-[10px] font-semibold uppercase tracking-[0.3em] text-signal-deep">
                 The placard
               </p>
-              <dl className="mt-4 space-y-3 font-ledger text-[11px] font-semibold uppercase tracking-[0.18em] text-ink/80">
+              <dl className="mt-4 space-y-3 font-ledger text-[11px] font-semibold uppercase tracking-[0.18em] text-ink-muted">
                 <div className="flex justify-between gap-4 border-b border-ink/10 pb-2">
                   <dt className="text-ink-faint">Name</dt>
                   <dd>{BRAND.name}</dd>
@@ -65,11 +73,11 @@ export default function AboutPage() {
                 </div>
                 <div className="flex justify-between gap-4 border-b border-ink/10 pb-2">
                   <dt className="text-ink-faint">DOT</dt>
-                  <dd>{BRAND.dot}</dd>
+                  <dd>{BRAND.dot.split(" (placeholder")[0]}</dd>
                 </div>
                 <div className="flex justify-between gap-4">
                   <dt className="text-ink-faint">MC</dt>
-                  <dd>{BRAND.mc}</dd>
+                  <dd>{BRAND.mc.split(" (placeholder")[0]}</dd>
                 </div>
               </dl>
               <p className="mt-4 border-t border-ink/15 pt-3 font-ledger text-[10px] font-semibold uppercase tracking-[0.2em] text-ink-faint">
@@ -84,7 +92,7 @@ export default function AboutPage() {
               What we do
               <span className="text-signal-deep">.</span>
             </h2>
-            <div className="mt-5 space-y-4 text-base leading-relaxed text-ink/75">
+            <div className="mt-5 space-y-4 text-base leading-relaxed text-ink-muted">
               <p>
                 TTI Recruiting connects CDL drivers with hiring carriers out of
                 the Kansas City, MO terminal. We keep a handful of open lanes --
@@ -118,7 +126,7 @@ export default function AboutPage() {
                         .
                       </span>
                     </h3>
-                    <p className="mt-2 max-w-prose text-sm leading-relaxed text-ink/70">
+                    <p className="mt-2 max-w-prose text-sm leading-relaxed text-ink-muted">
                       {p.body}
                     </p>
                   </div>

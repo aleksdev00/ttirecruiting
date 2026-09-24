@@ -23,7 +23,7 @@ export function V3PageHeader({
         {title}
       </h1>
       {lede ? (
-        <p className="mt-6 max-w-2xl text-lg leading-relaxed text-ink/70">{lede}</p>
+        <p className="mt-6 max-w-2xl text-lg leading-relaxed text-ink-muted">{lede}</p>
       ) : null}
     </div>
   );

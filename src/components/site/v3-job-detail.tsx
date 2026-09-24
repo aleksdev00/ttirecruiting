@@ -1,5 +1,6 @@
 import Link from "next/link";
 import type { JobPosting } from "@/lib/jobs";
+import { FULL_APPLICATION_URL } from "@/lib/site";
 
 const LANE_INDEX: Record<string, string> = {
   OTR: "01",
@@ -14,7 +15,7 @@ export function V3JobDetail({ job }: { job: JobPosting }) {
       <div className="mx-auto w-full max-w-[1440px] px-4 pb-10 pt-10 sm:px-6 lg:px-10 lg:pt-14">
         <Link
           href="/jobs"
-          className="inline-flex items-center gap-2 font-ledger text-[10px] font-semibold uppercase tracking-[0.26em] text-ink-faint transition-colors hover:text-signal-deep"
+          className="-my-2 inline-flex items-center gap-2 py-2 font-ledger text-[10px] font-semibold uppercase tracking-[0.26em] text-ink-faint transition-colors hover:text-signal-deep"
         >
           <span aria-hidden>&larr;</span> All lanes
         </Link>
@@ -32,7 +33,7 @@ export function V3JobDetail({ job }: { job: JobPosting }) {
           {job.title}
           <span className="text-signal-deep">.</span>
         </h1>
-        <p className="mt-6 max-w-2xl text-lg leading-relaxed text-ink/70">
+        <p className="mt-6 max-w-2xl text-lg leading-relaxed text-ink-muted">
           {job.summary}
         </p>
       </div>
@@ -56,7 +57,7 @@ export function V3JobDetail({ job }: { job: JobPosting }) {
                 {job.pay.weekly.toLocaleString("en-US")}
               </dd>
               <dd className="mt-1 font-ledger text-[11px] uppercase tracking-[0.18em] text-ink-faint">
-                est. weekly gross (placeholder)
+                est. weekly gross
               </dd>
             </div>
             <div className="border-b border-ink/15 p-6 sm:border-b-0 sm:border-r">
@@ -64,7 +65,7 @@ export function V3JobDetail({ job }: { job: JobPosting }) {
                 Annual miles
               </dt>
               <dd className="mt-2 font-display text-2xl uppercase leading-none tracking-tight sm:text-3xl">
-                {job.annualMiles}
+                {job.annualMiles.split(" (placeholder")[0]}
               </dd>
             </div>
             <div className="p-6">
@@ -72,13 +73,14 @@ export function V3JobDetail({ job }: { job: JobPosting }) {
                 Orientation
               </dt>
               <dd className="mt-2 font-display text-2xl uppercase leading-none tracking-tight sm:text-3xl">
-                {job.orientation}
+                {job.orientation.split(" (placeholder")[0]}
               </dd>
             </div>
           </dl>
           <p className="mt-4 max-w-3xl font-ledger text-[10px] font-semibold uppercase tracking-[0.2em] text-ink-faint">
             Pay, miles, and orientation figures are placeholders pending
-            verified hiring terms.
+            verified hiring terms. Available opportunities and terms are
+            subject to confirmation with the carrier.
           </p>
         </div>
       </div>
@@ -93,7 +95,7 @@ export function V3JobDetail({ job }: { job: JobPosting }) {
           </h3>
           <ul className="mt-5 space-y-3">
             {job.responsibilities.map((r) => (
-              <li key={r} className="flex items-baseline gap-3 text-base leading-relaxed text-ink/75">
+              <li key={r} className="flex items-baseline gap-3 text-base leading-relaxed text-ink-muted">
                 <span className="inline-block h-2 w-2 shrink-0 bg-signal-deep" aria-hidden="true" />
                 {r}
               </li>
@@ -105,7 +107,7 @@ export function V3JobDetail({ job }: { job: JobPosting }) {
           </h3>
           <ul className="mt-5 space-y-3">
             {job.requirements.map((r) => (
-              <li key={r} className="flex items-baseline gap-3 text-base leading-relaxed text-ink/75">
+              <li key={r} className="flex items-baseline gap-3 text-base leading-relaxed text-ink-muted">
                 <span className="inline-block h-2 w-2 shrink-0 bg-signal-deep" aria-hidden="true" />
                 {r}
               </li>
@@ -123,17 +125,19 @@ export function V3JobDetail({ job }: { job: JobPosting }) {
             </h2>
             <ul className="mt-6 space-y-4 border-t border-ink/15 pt-5">
               {job.benefits.map((b) => (
-                <li key={b} className="flex justify-between gap-4 font-ledger text-[11px] font-semibold uppercase tracking-[0.18em] text-ink/80">
+                <li key={b} className="flex justify-between gap-4 font-ledger text-[11px] font-semibold uppercase tracking-[0.18em] text-ink-muted">
                   <span className="flex items-center gap-2">
                     <span aria-hidden className="text-signal-deep">&rarr;</span>
-                    {b}
+                    {b.split(" (placeholder")[0]}
                   </span>
                 </li>
               ))}
             </ul>
             <div className="mt-8">
               <Link
-                href={`/apply/${job.slug}`}
+                href={FULL_APPLICATION_URL}
+                target="_blank"
+                rel="noopener noreferrer"
                 className="group inline-flex h-14 w-full items-center justify-center gap-3 bg-signal px-8 font-ledger text-xs font-semibold uppercase tracking-[0.2em] text-paper transition-colors hover:bg-signal-deep"
               >
                 Apply now

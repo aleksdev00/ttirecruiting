@@ -240,8 +240,16 @@
 /* ---------- focus ---------- */
 
 .v3-root :is(a, button):focus-visible {
-  outline: 2px solid var(--color-signal-deep);
+  outline: 2px solid var(--color-signal);
   outline-offset: 3px;
+}
+.v3-root :is(input, select, textarea):focus-visible {
+  outline: 2px solid var(--color-signal);
+  outline-offset: 2px;
+}
+.v3-root label:has(> input:focus-visible) {
+  outline: 2px solid var(--color-signal);
+  outline-offset: 2px;
 }
 
 /* ---------- reduced motion ---------- */

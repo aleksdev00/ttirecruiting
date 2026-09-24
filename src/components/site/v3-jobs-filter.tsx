@@ -96,7 +96,7 @@ export function JobsFilter() {
                 if (e.key === "Enter") update({ q });
               }}
               placeholder="Keywords..."
-              className="w-full min-w-40 bg-transparent px-3 font-ledger text-xs font-semibold uppercase tracking-[0.18em] text-ink placeholder:text-ink-faint focus:outline-none"
+              className="w-full min-w-40 bg-transparent px-3 font-ledger text-xs font-semibold uppercase tracking-[0.18em] text-ink placeholder:text-ink-faint"
             />
             <button
               type="button"

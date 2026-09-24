@@ -247,7 +247,7 @@ export function V3Board() {
                   <p className="font-ledger text-[11px] font-semibold uppercase tracking-[0.2em] text-paper/70">
                     On the board now
                     <span className="ml-3 font-display text-3xl text-paper">{roles}</span>
-                    <span className="ml-2">open role{roles === 1 ? "" : "s"}</span>
+                    <span className="ml-2">open posting{roles === 1 ? "" : "s"}</span>
                   </p>
                   {posting ? (
                     <p className="font-ledger text-[11px] font-semibold uppercase tracking-[0.2em] text-paper/70">
@@ -256,9 +256,14 @@ export function V3Board() {
                   ) : null}
                 </div>
 
+                <p className="mt-6 font-ledger text-[10px] font-semibold uppercase tracking-[0.2em] text-paper/60">
+                  Availability and terms are confirmed with the carrier before
+                  anything moves.
+                </p>
+
                 <Link
-                  href="/apply"
-                  className="group mt-10 inline-flex h-14 items-center justify-center gap-3 bg-signal px-8 font-ledger text-xs font-semibold uppercase tracking-[0.2em] text-paper transition-colors hover:bg-signal-deep"
+                  href="#quick-apply"
+                  className="group mt-10 inline-flex h-14 w-full items-center justify-center gap-3 bg-signal px-8 font-ledger text-xs font-semibold uppercase tracking-[0.2em] text-paper transition-colors hover:bg-signal-deep sm:w-auto"
                 >
                   Talk recruiting about {lane.key}
                   <span aria-hidden className="transition-transform group-hover:translate-x-1">

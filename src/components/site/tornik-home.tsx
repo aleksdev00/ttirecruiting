@@ -2,6 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 
 import { BRAND, JOBS, QUIZ_PATHS } from "@/lib/jobs";
+import { FULL_APPLICATION_URL } from "@/lib/site";
 import { DrivingTypesStack } from "@/components/site/driving-types-stack";
 import "./driving-types-motion.css";
 
@@ -70,7 +71,9 @@ export default function TornikHome() {
                 </span>
               </Link>
               <Link
-                href="/apply"
+                href={FULL_APPLICATION_URL}
+                target="_blank"
+                rel="noopener noreferrer"
                 className="group inline-flex h-14 items-center justify-center gap-2 border border-bone/35 px-10 font-sans text-sm font-black uppercase tracking-[0.18em] text-bone transition-colors hover:bg-bone hover:text-ink"
               >
                 Apply now
