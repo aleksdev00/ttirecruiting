@@ -19,7 +19,7 @@ const fieldSpecs = {
     .trim()
     .min(7, "Phone number is required.")
     .max(30)
-    .regex(/^[\d\s()+\-.]+$/, "Enter a valid phone number."),
+    .regex(/^(?=.*\d)[\d\s()+\-.]+$/, "Enter a valid phone number."),
 };
 
 function sapStatusRequired(
@@ -31,6 +31,19 @@ function sapStatusRequired(
       code: "custom",
       path: ["sapStatus"],
       message: "SAP status is required when SAP = Yes.",
+    });
+  }
+}
+
+function sapStatusContradiction(
+  data: { sap: "No" | "Yes"; sapStatus?: string },
+  ctx: z.RefinementCtx,
+) {
+  if (data.sap === "No" && data.sapStatus) {
+    ctx.addIssue({
+      code: "custom",
+      path: ["sapStatus"],
+      message: "SAP status must be empty when SAP = No.",
     });
   }
 }
@@ -47,7 +60,8 @@ export const QuickApplyClientSchema = z
       .boolean()
       .refine((v) => v === true, "Contact consent is required."),
   })
-  .superRefine(sapStatusRequired);
+  .superRefine(sapStatusRequired)
+  .superRefine(sapStatusContradiction);
 
 export type QuickApplyClientValues = z.infer<typeof QuickApplyClientSchema>;
 
@@ -68,7 +82,8 @@ export const QuickApplyLeadInputSchema = z
       message: "Acceptance of the Privacy Policy is required.",
     }),
   })
-  .superRefine(sapStatusRequired);
+  .superRefine(sapStatusRequired)
+  .superRefine(sapStatusContradiction);
 
 export type QuickApplyLeadInput = z.infer<typeof QuickApplyLeadInputSchema>;
 
@@ -77,3 +92,54 @@ export const QuickApplyLeadSchema = QuickApplyLeadInputSchema.extend({
 });
 
 export type QuickApplyLead = z.infer<typeof QuickApplyLeadSchema>;
+
+export const QUICK_APPLY_FORM_TYPE = "quick_apply" as const;
+
+export const SAP_STATUS_CANONICAL = ["open", "resolved"] as const;
+
+export const PROCESSING_STATUS = [
+  "received",
+  "delivery_not_configured",
+] as const;
+
+export const QuickApplyCanonicalSchema = z
+  .object({
+    submissionId: z.string().regex(
+      /^QA-\d{8}-[0123456789ABCDEFGHJKMNPQRSTVWXYZ]{4}$/,
+    ),
+    formType: z.literal(QUICK_APPLY_FORM_TYPE),
+    submittedAt: z.string().datetime(),
+    firstName: z.string(),
+    lastName: z.string(),
+    phone: z.string(),
+    normalizedPhone: z.string(),
+    hasSAP: z.boolean(),
+    sapStatus: z.enum(SAP_STATUS_CANONICAL).nullable(),
+    employmentPreference: z.enum(EMPLOYMENT_PREFERENCE_OPTIONS),
+    payTypePreference: z.enum(PAY_TYPE_OPTIONS),
+    contactConsent: z.literal(true),
+    termsAccepted: z.literal(true),
+    privacyAccepted: z.literal(true),
+    sourceUrl: z.string().nullable(),
+    referralCode: z.string().nullable(),
+    recruiter: z.string().nullable(),
+    processingStatus: z.enum(PROCESSING_STATUS),
+  })
+  .superRefine((data, ctx) => {
+    if (!data.hasSAP && data.sapStatus !== null) {
+      ctx.addIssue({
+        code: "custom",
+        path: ["sapStatus"],
+        message: "SAP status must be null when SAP is not held.",
+      });
+    }
+    if (data.hasSAP && data.sapStatus === null) {
+      ctx.addIssue({
+        code: "custom",
+        path: ["sapStatus"],
+        message: "SAP status is required when SAP is held.",
+      });
+    }
+  });
+
+export type QuickApplyCanonicalLead = z.infer<typeof QuickApplyCanonicalSchema>;

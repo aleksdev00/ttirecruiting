@@ -1,5 +1,5 @@
 import { QUICK_APPLY_DESTINATION_EMAIL } from "./config";
-import type { QuickApplyLead } from "./schema";
+import type { QuickApplyCanonicalLead } from "./schema";
 
 export interface ComposedQuickApplyEmail {
   to: string;
@@ -7,18 +7,27 @@ export interface ComposedQuickApplyEmail {
   text: string;
 }
 
+const SAP_STATUS_LABELS: Record<"open" | "resolved", string> = {
+  open: "Open",
+  resolved: "Resolved",
+};
+
 export function composeQuickApplyEmail(
-  lead: QuickApplyLead,
+  lead: QuickApplyCanonicalLead,
 ): ComposedQuickApplyEmail {
   const lines = [
     "Quick Apply Lead -- TTI Recruiting",
+    `Form type: ${lead.formType}`,
+    `Submission ID: ${lead.submissionId}`,
     "",
     `First Name: ${lead.firstName}`,
     `Last Name: ${lead.lastName}`,
-    `SAP: ${lead.sap}`,
-    ...(lead.sapStatus ? [`SAP Status: ${lead.sapStatus}`] : []),
+    `SAP: ${lead.hasSAP ? "Yes" : "No"}`,
+    ...(lead.sapStatus
+      ? [`SAP Status: ${SAP_STATUS_LABELS[lead.sapStatus]}`]
+      : []),
     `Employment preference: ${lead.employmentPreference}`,
-    `Pay type: ${lead.payType}`,
+    `Pay type: ${lead.payTypePreference}`,
     `Phone Number: ${lead.phone}`,
     "",
     "Contact Consent: Yes",

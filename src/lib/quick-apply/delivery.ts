@@ -5,18 +5,18 @@
  * must NOT claim a lead was delivered. To go live, implement delivery here
  * (e.g., Resend, SendGrid, SMTP) sending composeQuickApplyEmail(lead).to the
  * destination inbox, then return { ok: true, provider } on success. The
- * client form, API route, and schemas stay unchanged -- only this function
- * needs to be wired.
+ * client form stays unchanged -- only this function (and the future
+ * persistence/integration layer) needs to be wired.
  */
 import { composeQuickApplyEmail } from "./compose";
-import type { QuickApplyLead } from "./schema";
+import type { QuickApplyCanonicalLead } from "./schema";
 
 export type LeadDeliveryResult =
   | { ok: true; provider: string }
   | { ok: false; code: "NOT_CONFIGURED" | "DELIVERY_FAILED"; message: string };
 
 export async function deliverQuickApplyLead(
-  lead: QuickApplyLead,
+  lead: QuickApplyCanonicalLead,
 ): Promise<LeadDeliveryResult> {
   const email = composeQuickApplyEmail(lead);
   void email;

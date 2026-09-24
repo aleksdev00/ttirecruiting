@@ -1,5 +1,6 @@
 import { deliverQuickApplyLead } from "@/lib/quick-apply/delivery";
 import { QuickApplyLeadInputSchema } from "@/lib/quick-apply/schema";
+import { buildCanonicalLead } from "@/lib/quick-apply/build";
 
 export const runtime = "nodejs";
 
@@ -19,7 +20,7 @@ export async function POST(request: Request) {
     );
   }
 
-  const lead = { ...parsed.data, submittedAt: new Date().toISOString() };
+  const lead = buildCanonicalLead(parsed.data);
   const result = await deliverQuickApplyLead(lead);
 
   if (!result.ok) {
