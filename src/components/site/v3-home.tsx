@@ -3,6 +3,7 @@ import Link from "next/link";
 import { BRAND, DRIVING_TYPES, JOBS, QUIZ_PATHS } from "@/lib/jobs";
 import { FULL_APPLICATION_URL } from "@/lib/site";
 import { V3Board } from "@/components/site/v3-board";
+import { V3FAQ } from "@/components/site/v3-faq";
 import { V3QuickApply } from "@/components/site/v3-quick-apply";
 
 const MAST_IMG =
@@ -285,6 +286,9 @@ export default function V3Home() {
 
       {/* ==================== THE BOARD ==================== */}
       <V3Board />
+
+      {/* ==================== FAQ ==================== */}
+      <V3FAQ />
 
       {/* ==================== FINALE PLATE / KNOW BEFORE YOU RUN ==================== */}
       <section className="v3-plate bg-ink text-paper">

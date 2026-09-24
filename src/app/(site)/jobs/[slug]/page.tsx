@@ -1,8 +1,10 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
-import { getJobBySlug, jobRepository, JOBS } from "@/lib/jobs";
+import { BRAND, getJobBySlug, jobRepository, JOBS } from "@/lib/jobs";
 import { SITE_URL } from "@/lib/site";
 import { V3JobDetail } from "@/components/site/v3-job-detail";
+
+export const dynamicParams = false;
 
 type Props = {
   params: Promise<{ slug: string }>;
@@ -48,7 +50,7 @@ export default async function JobDetailPage({ params }: Props) {
     employmentType: job.postingMeta.employmentType,
     hiringOrganization: {
       "@type": "Organization",
-      name: "TTI Recruiting Inc. (placeholder)",
+      name: BRAND.name,
       sameAs: SITE_URL,
     },
     jobLocation: {
