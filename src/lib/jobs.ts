@@ -32,7 +32,7 @@ export const BRAND = {
   tagline: "Flatbed. Regional. Reliable.",
   est: "Family-owned since 1998 (placeholder - confirm founding year)",
   phone: "(555) 014-7755 (placeholder - confirm recruiting line)",
-  email: "recruiting@ttirecruiting.com (placeholder - confirm inbox)",
+  email: "recruiting@ttirecruiting.us (placeholder - confirm inbox)",
   dot: "DOT #1234567 (placeholder - confirm)",
   mc: "MC #987654 (placeholder - confirm)",
   address: {

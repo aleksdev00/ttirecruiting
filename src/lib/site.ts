@@ -1,11 +1,11 @@
 /*
  * SITE CONFIG -- shared values for metadata, canonical, sitemap, robots.
- * ASCII only (repo policy). Replace SITE_URL with the live domain before
- * public launch; it currently falls back to a placeholder.
+ * ASCII only (repo policy). NEXT_PUBLIC_SITE_URL overrides the canonical
+ * production domain; the fallback below is the live site domain.
  */
 
 export const SITE_URL =
-  process.env.NEXT_PUBLIC_SITE_URL ?? "https://ttirecruiting.com";
+  process.env.NEXT_PUBLIC_SITE_URL ?? "https://ttirecruiting.us";
 
 export const FULL_APPLICATION_URL =
   process.env.NEXT_PUBLIC_FULL_APPLICATION_URL ??
