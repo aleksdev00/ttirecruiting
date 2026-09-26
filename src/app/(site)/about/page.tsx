@@ -1,17 +1,17 @@
 import type { Metadata } from "next";
-import { BRAND } from "@/lib/jobs";
+import { BRAND } from "@/lib/brand";
 import { SITE_URL } from "@/lib/site";
 import { V3PageHeader } from "@/components/site/v3-page-header";
 
 export const metadata: Metadata = {
   title: "About",
-  description:
-    "TTI Recruiting is a CDL driver placement operation out of Kansas City, MO -- flatbed, regional, and reliable lanes.",
+description:
+      "TTI Recruiting helps CDL drivers connect with recruiting opportunities that fit how they want to work.",
   alternates: { canonical: "/about" },
   openGraph: {
     title: "About | TTI Recruiting",
     description:
-      "TTI Recruiting is a CDL driver placement operation out of Kansas City, MO -- flatbed, regional, and reliable lanes.",
+      "TTI Recruiting helps CDL drivers connect with recruiting opportunities that fit how they want to work.",
     url: `${SITE_URL}/about`,
     type: "website",
   },
@@ -21,7 +21,7 @@ const PRINCIPLES = [
   {
     index: "01",
     title: "Regional first",
-    body: "We favor shorter lanes and predictable home time over pure miles. Most of our open positions keep drivers within a set footprint and home on a schedule they can plan around.",
+    body: "We listen for the route and home-time pattern that fits the driver's life before discussing a potential match.",
   },
   {
     index: "02",
@@ -30,8 +30,8 @@ const PRINCIPLES = [
   },
   {
     index: "03",
-    title: "Recruiting, not benching",
-    body: "We place drivers into positions. The goal is a lane that fits your life, not just a seat filled for the week.",
+    title: "Recruiting, not dispatching",
+    body: "We are a recruiting company, not the employing carrier. The goal is a potential match that fits your life and experience.",
   },
 ];
 
@@ -46,7 +46,7 @@ export default function AboutPage() {
             <span className="text-signal-deep">time.</span>
           </>
         }
-        lede="Driver placement out of the Kansas City, MO area. We match CDL drivers to lanes that fit how they want to live and work."
+        lede="We help CDL drivers discuss recruiting opportunities that fit how they want to live and work."
       />
 
       <div className="mx-auto w-full max-w-[1440px] px-4 pb-20 sm:px-6 lg:px-10">
@@ -62,28 +62,14 @@ export default function AboutPage() {
                   <dd>{BRAND.name}</dd>
                 </div>
                 <div className="flex justify-between gap-4 border-b border-ink/10 pb-2">
-                  <dt className="text-ink-faint">Hub</dt>
-                  <dd>
-                    {BRAND.address.city}, {BRAND.address.state}
-                  </dd>
+                  <dt className="text-ink-faint">Role</dt>
+                  <dd>Recruiting company</dd>
                 </div>
                 <div className="flex justify-between gap-4 border-b border-ink/10 pb-2">
-                  <dt className="text-ink-faint">Region</dt>
-                  <dd>{BRAND.region}</dd>
-                </div>
-                <div className="flex justify-between gap-4 border-b border-ink/10 pb-2">
-                  <dt className="text-ink-faint">DOT</dt>
-                  <dd>{BRAND.dot.split(" (placeholder")[0]}</dd>
-                </div>
-                <div className="flex justify-between gap-4">
-                  <dt className="text-ink-faint">MC</dt>
-                  <dd>{BRAND.mc.split(" (placeholder")[0]}</dd>
+                  <dt className="text-ink-faint">Focus</dt>
+                  <dd>CDL recruiting</dd>
                 </div>
               </dl>
-              <p className="mt-4 border-t border-ink/15 pt-3 font-ledger text-[10px] font-semibold uppercase tracking-[0.2em] text-ink-faint">
-                DOT / MC figures are placeholders. Confirmed numbers required
-                before launch.
-              </p>
             </div>
           </div>
 
@@ -94,23 +80,20 @@ export default function AboutPage() {
             </h2>
             <div className="mt-5 space-y-4 text-base leading-relaxed text-ink-muted">
               <p>
-                TTI Recruiting connects CDL drivers with hiring carriers out of
-                the Kansas City, MO terminal. We keep a handful of open lanes --
-                flatbed, reefer, dry van, tanker, and box truck -- and we match
-                each driver to the position that fits their home-time needs and
-                experience.
+                TTI Recruiting connects CDL drivers with hiring carriers and
+                discusses potential matches based on experience, preferences,
+                and the recruiting desk's current information.
               </p>
               <p>
-                We are honest about the limits of a third-party placement desk:
-                we do not operate the trucks. Every lane listed here is a real
-                position shape we recruit for, and hiring terms (pay, home time,
-                miles, bonuses) shown anywhere on this site are placeholders
-                pending confirmation with the hiring carrier.
+                We are honest about the limits of a third-party recruiting
+                company: TTI does not operate the trucks or employ the drivers.
+                A Quick Apply submission starts a conversation; recruiting
+                shares verified details when a suitable opportunity is identified.
               </p>
             </div>
 
             <h2 className="mt-12 font-display text-2xl uppercase leading-none tracking-tight sm:text-3xl">
-              How we pick a lane
+              How we assess a potential match
               <span className="text-signal-deep">.</span>
             </h2>
             <ul className="mt-6 space-y-6">

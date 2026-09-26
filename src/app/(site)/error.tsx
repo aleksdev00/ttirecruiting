@@ -1,7 +1,5 @@
 "use client";
 
-import Link from "next/link";
-
 export default function SiteError({
   reset,
 }: {
@@ -15,7 +13,7 @@ export default function SiteError({
           Dispatch fault
         </p>
         <h1 className="mt-5 font-display text-[clamp(2.8rem,6.5vw,6.5rem)] uppercase leading-[0.86] tracking-tight">
-          That lane is{" "}
+          That page is{" "}
           <span className="text-signal-deep">down.</span>
         </h1>
         <p className="mt-6 max-w-xl text-lg leading-relaxed text-ink-muted">
@@ -30,12 +28,6 @@ export default function SiteError({
           >
             Try again
           </button>
-          <Link
-            href="/jobs"
-            className="inline-flex h-12 items-center justify-center border border-ink/40 px-8 font-ledger text-xs font-semibold uppercase tracking-[0.2em] text-ink transition-colors hover:bg-ink hover:text-paper"
-          >
-            Open lanes
-          </Link>
         </div>
       </div>
     </div>

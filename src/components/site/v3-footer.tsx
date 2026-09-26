@@ -1,6 +1,5 @@
 import Link from "next/link";
-import { BRAND } from "@/lib/jobs";
-import { CONTACT_EMAIL } from "@/lib/site";
+import { BRAND } from "@/lib/brand";
 
 export function V3Footer() {
   return (
@@ -18,7 +17,7 @@ export function V3Footer() {
               {BRAND.tagline}
             </p>
             <p className="mt-6 max-w-[26ch] text-sm leading-relaxed text-ink-muted">
-              CDL driver placement out of {BRAND.address.city}, {BRAND.address.state}. {BRAND.region}.
+              CDL driver recruiting and matching conversations for drivers exploring their next opportunity.
             </p>
           </div>
 
@@ -29,7 +28,6 @@ export function V3Footer() {
             <ul className="mt-4 space-y-2">
               {[
                 { href: "/#quick-apply", label: "Quick apply" },
-                { href: "/jobs", label: "Jobs" },
                 { href: "/about", label: "About" },
                 { href: "/contact", label: "Contact" },
                 { href: "/privacy", label: "Privacy" },
@@ -48,33 +46,10 @@ export function V3Footer() {
           </nav>
 
           <div>
-            <p className="font-ledger text-[10px] font-semibold uppercase tracking-[0.3em] text-ink-faint">
-              Wire the yard
-            </p>
-            <address className="mt-4 text-sm not-italic leading-relaxed text-ink-muted">
-              {BRAND.address.line1}
-              <br />
-              {BRAND.address.city}, {BRAND.address.state} {BRAND.address.zip}
-            </address>
-            <a
-              href={`mailto:${CONTACT_EMAIL}`}
-              className="mt-4 inline-flex min-h-11 items-center font-ledger text-xs font-semibold uppercase tracking-[0.18em] text-ink-muted transition-colors hover:text-signal-deep"
-            >
-              {CONTACT_EMAIL}
-            </a>
-          </div>
-
-          <div>
-            <p className="font-ledger text-[10px] font-semibold uppercase tracking-[0.3em] text-ink-faint">
-              Placard
-            </p>
-            <p className="mt-4 font-ledger text-xs leading-relaxed text-ink-muted">
-              {BRAND.dot.split(" (placeholder")[0]}
-              <br />
-              {BRAND.mc.split(" (placeholder")[0]}
-            </p>
-            <p className="mt-4 text-xs leading-relaxed text-ink-faint">
-              DOT and MC figures pending confirmation before publishing.
+            <p className="font-ledger text-[10px] font-semibold uppercase tracking-[0.3em] text-ink-faint">Recruiting flow</p>
+            <p className="mt-4 text-sm leading-relaxed text-ink-muted">
+              Quick Apply, recruiter review, contact, matching discussion, then
+              the full application when appropriate.
             </p>
           </div>
         </div>
@@ -82,8 +57,8 @@ export function V3Footer() {
         <div className="mt-12 flex flex-col gap-2 border-t border-ink/15 pt-5 font-ledger text-[10px] font-semibold uppercase tracking-[0.2em] text-ink-faint sm:flex-row sm:items-center sm:justify-between">
           <p>Copyright {BRAND.name}. All rights reserved.</p>
           <p className="text-ink-faint">
-            Pay, miles, home time, and DOT/MC figures shown here are
-            placeholders pending verified hiring terms.
+            TTI Recruiting is not the employing carrier. Hiring details come
+            from the relevant carrier after a verified match.
           </p>
         </div>
       </div>

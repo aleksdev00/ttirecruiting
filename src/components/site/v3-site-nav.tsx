@@ -3,11 +3,10 @@
 import * as React from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { BRAND, QUIZ_PATHS } from "@/lib/jobs";
+import { BRAND } from "@/lib/brand";
 
 const NAV_LINKS = [
   { href: "/", label: "Home" },
-  { href: "/jobs", label: "Jobs" },
   { href: "/about", label: "About" },
   { href: "/contact", label: "Contact" },
 ] as const;
@@ -92,12 +91,6 @@ export function V3SiteNav() {
               {l.label}
             </Link>
           ))}
-          <Link
-            href={QUIZ_PATHS.start}
-            className="inline-flex h-10 items-center justify-center gap-2 bg-signal-deep px-5 font-ledger text-xs font-semibold uppercase tracking-[0.2em] text-paper transition-colors hover:bg-ink hover:text-paper"
-          >
-            Find your fit
-          </Link>
         </div>
 
         <button
@@ -137,13 +130,6 @@ export function V3SiteNav() {
                 {l.label}
               </Link>
             ))}
-            <Link
-              href={QUIZ_PATHS.start}
-              onClick={() => setOpen(false)}
-              className="mt-2 inline-flex h-12 items-center justify-center bg-signal-deep px-5 font-ledger text-sm font-semibold uppercase tracking-[0.2em] text-paper transition-colors hover:bg-ink hover:text-paper"
-            >
-              Find your fit
-            </Link>
           </div>
         </div>
       )}

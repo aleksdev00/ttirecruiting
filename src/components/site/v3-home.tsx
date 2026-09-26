@@ -1,8 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
-import { BRAND, DRIVING_TYPES, JOBS, QUIZ_PATHS } from "@/lib/jobs";
+import { DRIVING_TYPES } from "@/lib/brand";
 import { FULL_APPLICATION_URL } from "@/lib/site";
-import { V3Board } from "@/components/site/v3-board";
 import { V3FAQ } from "@/components/site/v3-faq";
 import { V3QuickApply } from "@/components/site/v3-quick-apply";
 
@@ -18,7 +17,7 @@ export default function V3Home() {
           <div className="flex items-center justify-between border-y border-ink/20 py-3 font-ledger text-[10px] font-semibold uppercase tracking-[0.3em] text-ink-faint">
             <p>The Dispatch</p>
             <p className="hidden sm:inline">Vol. 03 / Issue 01</p>
-            <p>{BRAND.region}</p>
+            <p>U.S. market</p>
           </div>
 
           <div className="mt-8 grid items-stretch gap-10 lg:grid-cols-12 lg:gap-8">
@@ -61,24 +60,6 @@ export default function V3Home() {
                   className="group inline-flex h-14 w-full items-center justify-center gap-3 bg-signal-deep px-9 font-ledger text-xs font-semibold uppercase tracking-[0.2em] text-paper transition-colors hover:bg-ink hover:text-paper sm:w-auto"
                 >
                   Quick apply
-                  <span aria-hidden className="transition-transform group-hover:translate-x-1">
-                    &rarr;
-                  </span>
-                </Link>
-                <Link
-                  href="/jobs"
-                  className="group inline-flex h-14 w-full items-center justify-center gap-3 border border-ink/40 px-9 font-ledger text-xs font-semibold uppercase tracking-[0.2em] text-ink transition-colors hover:bg-ink hover:text-paper sm:w-auto"
-                >
-                  See open lanes
-                  <span aria-hidden className="transition-transform group-hover:translate-x-1">
-                    &rarr;
-                  </span>
-                </Link>
-                <Link
-                  href={QUIZ_PATHS.start}
-                  className="group inline-flex h-14 w-full items-center justify-center gap-3 border border-ink/40 px-9 font-ledger text-xs font-semibold uppercase tracking-[0.2em] text-ink transition-colors hover:bg-ink hover:text-paper sm:w-auto"
-                >
-                  Fit quiz
                   <span aria-hidden className="transition-transform group-hover:translate-x-1">
                     &rarr;
                   </span>
@@ -158,7 +139,7 @@ export default function V3Home() {
                 [
                   ["Freight", "See the load before you commit"],
                   ["Home time", "Shown up front, planned around you"],
-                  ["Pay", "Rates on the board, not a mystery"],
+                  ["Pay", "Rates up front, not a mystery"],
                   ["Equipment", "Know the gear before the pre-trip"],
                 ] as const
               ).map(([k, v]) => (
@@ -180,10 +161,10 @@ export default function V3Home() {
             <div className="h-full border border-ink/20">
               {(
                 [
-                  [String(JOBS.length), "Opportunity postings on the board"],
-                  [String(DRIVING_TYPES.length), "Active driving lanes"],
+                  [String(DRIVING_TYPES.length), "Driving lanes served"],
+                  [String(DRIVING_TYPES.length), "Driving types served"],
                   ["03", "Equipment types / Flatbed / Reefer / Dry Van"],
-                  ["04", "Coverage / " + BRAND.region],
+                ["04", "Coverage / U.S. market"],
                 ] as const
               ).map(([figure, label], i) => (
                 <div
@@ -284,9 +265,6 @@ export default function V3Home() {
         </div>
       </section>
 
-      {/* ==================== THE BOARD ==================== */}
-      <V3Board />
-
       {/* ==================== FAQ ==================== */}
       <V3FAQ />
 
@@ -295,7 +273,7 @@ export default function V3Home() {
         <div className="mx-auto grid w-full max-w-[1440px] gap-14 px-4 py-24 sm:px-6 lg:grid-cols-12 lg:px-10 lg:py-32">
           <div className="lg:col-span-7">
             <p className="v3-fade font-ledger text-xs font-semibold uppercase tracking-[0.3em] text-paper">
-              Not sure which lane fits?
+              Not sure what fits?
             </p>
             <h2 className="mt-5 font-display text-[clamp(2.8rem,7vw,6.5rem)] uppercase leading-[0.86] tracking-tight">
               <span className="v3-mline">
@@ -319,7 +297,7 @@ export default function V3Home() {
                 [
                   ["01", "Freight", "See the load"],
                   ["02", "Home time", "Shown up front"],
-                  ["03", "Pay", "Rates on the board"],
+                  ["03", "Pay", "Rates up front"],
                   ["04", "Gear", "No surprises at the pre-trip"],
                 ] as const
               ).map(([i, k, v]) => (
@@ -342,17 +320,8 @@ export default function V3Home() {
 
             <div className="v3-fade mt-9 flex flex-col gap-4 sm:flex-row sm:flex-wrap sm:items-center">
               <Link
-                href={QUIZ_PATHS.start}
-                className="group inline-flex h-14 w-full items-center justify-center gap-3 bg-signal px-9 font-ledger text-xs font-semibold uppercase tracking-[0.2em] text-paper transition-colors hover:bg-signal-deep sm:w-auto"
-              >
-                Take the two-minute fit quiz
-                <span aria-hidden className="transition-transform group-hover:translate-x-1">
-                  &rarr;
-                </span>
-              </Link>
-              <Link
                 href="#quick-apply"
-                className="group inline-flex h-14 w-full items-center justify-center gap-3 border border-paper/40 px-9 font-ledger text-xs font-semibold uppercase tracking-[0.2em] text-paper transition-colors hover:bg-paper hover:text-ink sm:w-auto"
+                className="group inline-flex h-14 w-full items-center justify-center gap-3 bg-signal px-9 font-ledger text-xs font-semibold uppercase tracking-[0.2em] text-paper transition-colors hover:bg-signal-deep sm:w-auto"
               >
                 Quick apply
                 <span aria-hidden className="transition-transform group-hover:translate-x-1">

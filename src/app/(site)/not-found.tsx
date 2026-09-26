@@ -21,12 +21,6 @@ export default function SiteNotFound() {
           >
             Home
           </Link>
-          <Link
-            href="/jobs"
-            className="inline-flex h-12 items-center justify-center border border-ink/40 px-8 font-ledger text-xs font-semibold uppercase tracking-[0.2em] text-ink transition-colors hover:bg-ink hover:text-paper"
-          >
-            Open lanes
-          </Link>
         </div>
       </div>
     </div>

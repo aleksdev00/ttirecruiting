@@ -15,7 +15,7 @@
  *                       ancestor -- the pattern proven on this codebase).
  *   .v3-fade         -> fade-and-settle copy.
  *   .v3-ledger-row   -> hairline ledger entry that steps up.
- *   named timelines: --sheet-view, --board-view, --plate-view.
+ *   named timelines: --sheet-view, --plate-view.
  *   root timelines:  scroll(root) for the masthead + progress rails.
  */
 
@@ -76,17 +76,6 @@
   }
   to {
     transform: translateY(5%) scale(1);
-  }
-}
-
-@keyframes v3-glyph-in {
-  from {
-    opacity: 0;
-    transform: scale(0.92);
-  }
-  to {
-    opacity: 1;
-    transform: scale(1);
   }
 }
 
@@ -181,10 +170,6 @@
     view-timeline-name: --sheet-view;
     view-timeline-axis: block;
   }
-  .v3-root .v3-board {
-    view-timeline-name: --board-view;
-    view-timeline-axis: block;
-  }
   .v3-root .v3-plate {
     view-timeline-name: --plate-view;
     view-timeline-axis: block;
@@ -207,17 +192,6 @@
     animation-range: entry 10% entry 58%;
   }
 
-  .v3-board .v3-headline {
-    animation: v3-mask-up linear both;
-    animation-timeline: --board-view;
-    animation-range: entry 4% entry 34%;
-  }
-  .v3-board .v3-plate {
-    animation: v3-up-in linear both;
-    animation-timeline: --board-view;
-    animation-range: entry 12% entry 55%;
-  }
-
   .v3-plate .v3-mline {
     animation: v3-mask-up linear both;
     animation-timeline: --plate-view;
@@ -228,13 +202,6 @@
     animation-timeline: --plate-view;
     animation-range: entry 15% entry 72%;
   }
-}
-
-/* ---------- interactive lane glyph (state-change, not scroll) ---------- */
-
-.v3-glyph {
-  transform-origin: center;
-  animation: v3-glyph-in 0.5s cubic-bezier(0.2, 0.9, 0.25, 1) both;
 }
 
 /* ---------- focus ---------- */
@@ -262,14 +229,11 @@
   .v3-sheet .v3-word,
   .v3-sheet .v3-ledger-row,
   .v3-sheet .v3-fact,
-  .v3-board .v3-headline,
-  .v3-board .v3-plate,
   .v3-plate .v3-mline,
   .v3-plate .v3-fade,
   .v3-rail-fill,
   .v3-progress,
-  .v3-photo-img,
-  .v3-glyph {
+  .v3-photo-img {
     animation: none !important;
   }
   .v3-mline,

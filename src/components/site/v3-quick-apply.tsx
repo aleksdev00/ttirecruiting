@@ -209,11 +209,12 @@ export function V3QuickApply() {
         </div>
 
         <div className="lg:col-span-7">
-          <form
-            onSubmit={handleSubmit(onSubmit)}
-            noValidate
-            className="border border-paper/25 bg-ink p-6 sm:p-8"
-          >
+          <div className="lg:flex lg:justify-center">
+            <form
+              onSubmit={handleSubmit(onSubmit)}
+              noValidate
+              className="w-full lg:max-w-xl border border-paper/25 bg-ink p-6 sm:p-8"
+            >
             <div className="grid gap-6 sm:grid-cols-2">
               <div>
                 <label
@@ -425,7 +426,8 @@ export function V3QuickApply() {
                 </p>
               </div>
             ) : null}
-          </form>
+            </form>
+          </div>
         </div>
       </div>
     </section>

@@ -8,7 +8,6 @@
  * client form stays unchanged -- only this function (and the future
  * persistence/integration layer) needs to be wired.
  */
-import { composeQuickApplyEmail } from "./compose";
 import type { QuickApplyCanonicalLead } from "./schema";
 
 export type LeadDeliveryResult =
@@ -18,8 +17,7 @@ export type LeadDeliveryResult =
 export async function deliverQuickApplyLead(
   lead: QuickApplyCanonicalLead,
 ): Promise<LeadDeliveryResult> {
-  const email = composeQuickApplyEmail(lead);
-  void email;
+  void lead;
 
   return {
     ok: false,

@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import { SITE_URL } from "@/lib/site";
 import { V3PageHeader } from "@/components/site/v3-page-header";
 
@@ -40,7 +41,7 @@ export default function TermsPage() {
               <p>
                 This website is provided for informational purposes to help
                 you understand TTI Recruiting's driver-matching process and
-                current opportunities. By using it you agree to these terms and
+                potential opportunities. By using it you agree to these terms and
                 to provide only truthful information anywhere you engage with
                 the recruiting desk.
               </p>
@@ -49,16 +50,15 @@ export default function TermsPage() {
 
           <section>
             <h2 className="font-display text-2xl uppercase leading-none tracking-tight sm:text-3xl">
-              Placeholder figures
+              Verified details
               <span className="text-signal-deep">.</span>
             </h2>
             <div className="mt-4 space-y-3">
               <p>
-                Pay rates, sign-on bonuses, home-time schedules, miles, and
-                orientation details shown on this site are illustrative
-                placeholders. They are not offers or guarantees of employment
-                terms. Final terms are always determined by the hiring carrier
-                before any offer is made.
+                TTI does not publish unverified job openings or employment
+                terms. Any pay, home-time, equipment, or other hiring details
+                discussed after a potential match must be confirmed with the
+                employing carrier before any decision or application.
               </p>
             </div>
           </section>
@@ -86,8 +86,8 @@ export default function TermsPage() {
             <div className="mt-4 space-y-3">
               <p>
                 The site is provided "as is" without warranties of any kind.
-                We make no guarantee that a lane will remain listed or that
-                any application will result in placement.
+                We make no guarantee that a recruiting conversation will result
+                in placement or employment.
               </p>
             </div>
           </section>
@@ -131,12 +131,12 @@ export default function TermsPage() {
                 TTI Recruiting
                 <br />
                 Email:{" "}
-                <a
-                  href="mailto:info@ttirecruiting.us"
+                  <Link
+                  href="/#quick-apply"
                   className="text-ink underline underline-offset-4 transition-colors hover:text-signal-deep"
                 >
-                  info@ttirecruiting.us
-                </a>
+                  Quick Apply
+                  </Link>
               </p>
             </div>
           </section>

@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import { SITE_URL } from "@/lib/site";
 import { V3PageHeader } from "@/components/site/v3-page-header";
 
@@ -131,12 +132,12 @@ export default function PrivacyPage() {
                 TTI Recruiting
                 <br />
                 Email:{" "}
-                <a
-                  href="mailto:info@ttirecruiting.us"
+                  <Link
+                  href="/#quick-apply"
                   className="text-ink underline underline-offset-4 transition-colors hover:text-signal-deep"
                 >
-                  info@ttirecruiting.us
-                </a>
+                  Quick Apply
+                  </Link>
               </p>
             </div>
           </section>

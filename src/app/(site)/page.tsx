@@ -15,7 +15,7 @@ const webJsonLd = {
   "@type": "WebSite",
   "@id": `${SITE_URL}/#website`,
   url: SITE_URL,
-  name: SITE.defaultTitle,
+  name: SITE.name,
   publisher: {
     "@id": `${SITE_URL}/#organization`,
   },

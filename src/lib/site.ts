@@ -12,18 +12,16 @@ export const FULL_APPLICATION_URL =
   process.env.NEXT_PUBLIC_APPLY_URL ??
   "https://apply.ttirecruiting.us";
 
-export const CONTACT_EMAIL = "info@ttirecruiting.us";
-
 export const SITE = {
   url: SITE_URL,
-  name: "TTI Recruiting Inc.",
+  name: "TTI Recruiting",
   tagline: "Flatbed. Regional. Reliable.",
   defaultTitle: "TTI Recruiting | Flatbed. Regional. Reliable.",
   description:
-    "TTI Recruiting helps CDL drivers find trucking opportunities in the U.S. market. OTR, regional, local, and dedicated lanes across the Midwest.",
+    "TTI Recruiting helps CDL drivers connect with recruiting opportunities in the U.S. market. OTR, regional, local, and dedicated lanes across the Midwest.",
   keywords: [
-    "CDL jobs",
-    "truck driver jobs",
+    "CDL recruiting",
+    "truck driver recruiting",
     "TTI Recruiting",
     "flatbed driver",
     "trucking opportunities",

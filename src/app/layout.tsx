@@ -39,7 +39,7 @@ export const metadata: Metadata = {
   keywords: SITE.keywords,
   openGraph: {
     title: SITE.defaultTitle,
-    description: "Helping CDL drivers find trucking opportunities in the U.S. market.",
+    description: "Helping CDL drivers connect with recruiting opportunities in the U.S. market.",
     url: SITE_URL,
     type: "website",
     siteName: "TTI Recruiting",
