@@ -1,11 +1,13 @@
 /*
  * SITE CONFIG -- shared values for metadata, canonical, sitemap, robots.
  * ASCII only (repo policy). NEXT_PUBLIC_SITE_URL overrides the canonical
- * production domain; the fallback below is the live site domain.
+ * production domain; the fallback below is the deployment-safe site domain.
  */
 
+const configuredSiteUrl = process.env.NEXT_PUBLIC_SITE_URL?.trim();
+
 export const SITE_URL =
-  process.env.NEXT_PUBLIC_SITE_URL ?? "https://ttirecruiting.us";
+  configuredSiteUrl || "https://ttirecruiting.vercel.app";
 
 export const FULL_APPLICATION_URL =
   process.env.NEXT_PUBLIC_FULL_APPLICATION_URL ??
