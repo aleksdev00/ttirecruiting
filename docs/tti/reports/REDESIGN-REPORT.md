@@ -6,7 +6,7 @@ The former editorial “dispatch” homepage was replaced with a route-desk comp
 
 ## Skill use
 
-`pro-design` was applied for brand-first review, pattern selection, token reuse, motion/reduced-motion behavior, accessible focus states, and the browser verification checklist. The requested `skillui` capability is not installed in this session; it was recorded as unavailable in the skills matrix.
+`pro-design` was applied for brand-first review, pattern selection, token reuse, motion/reduced-motion behavior, accessible focus states, and the browser verification checklist. The provided SkillUI CLI was built from source and used to scan this repository; its generated extraction is preserved under `docs/tti/skillui-extraction/`. A global npm install was blocked by the environment's `esbuild` postinstall spawn failure.
 
 ## Verification
 
