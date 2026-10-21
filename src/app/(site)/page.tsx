@@ -1,5 +1,5 @@
 import { SITE, SITE_URL } from "@/lib/site";
-import V3Home from "@/components/site/v3-home";
+import MarketingHome from "@/components/site/marketing-home";
 
 const orgJsonLd = {
   "@context": "https://schema.org",
@@ -24,7 +24,7 @@ const webJsonLd = {
 export default function Home() {
   return (
     <>
-      <V3Home />
+      <MarketingHome />
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(orgJsonLd) }}
