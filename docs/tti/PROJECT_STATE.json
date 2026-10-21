@@ -1,0 +1,27 @@
+{
+  "project": "TTI Recruiting public website",
+  "updated_at_utc": "2026-10-21T18:35:00Z",
+  "execution_mode": "autonomous_preview",
+  "repository": {
+    "root": "E:\\ttirecruiting_New_website\\ttirecruiting",
+    "remote": "https://github.com/aleksdev00/ttirecruiting.git",
+    "branch": "codex/phase-01-discovery",
+    "head_commit": "40060a5913351655d832630a684262131a80af37",
+    "working_tree_summary": "Discovery artifacts added; no application code changed"
+  },
+  "current_phase": "07",
+  "last_completed_phase": "06",
+  "phase_statuses": {"01": "PARTIAL", "02": "PARTIAL", "03": "PARTIAL", "04": "PARTIAL", "05": "PARTIAL", "06": "PARTIAL", "07": "PARTIAL", "08": "NOT_STARTED", "09": "NOT_STARTED", "10": "NOT_STARTED", "11": "NOT_STARTED", "12": "NOT_STARTED", "13": "NOT_STARTED"},
+  "deployment": {"vercel_project": null, "preview_url": null, "production_url": null, "verified_commit": null, "status": "NOT_DEPLOYED"},
+  "authorization": {"remote_write": "UNKNOWN", "preview_deploy": "UNKNOWN", "production_release": "NOT_ESTABLISHED", "source_of_authorization": "User supplied GitHub repository URL"},
+  "authoritative_intake_store": null,
+  "routing_contract": {"w2": "existing driver application; not verified", "1099": "recruiter-assisted intake; private process not verified", "lease": "unconfirmed"},
+  "blocking_requirements": ["REQ-07", "REQ-08", "REQ-09"],
+  "open_decisions": ["authoritative catalog persistence", "authoritative intake store", "exact admin identity subjects", "staging notification destination"],
+  "pending_verification": ["full PDF rendering/extraction", "Google Sheet gid 1480331144", "public and DriverApp route contracts", "data recipient/notification ownership", "exact public claims approval"],
+  "completed_checks": ["repository identity", "AGENTS.md inspection", "npm install", "npm lint"],
+  "report_paths": ["docs/tti/discovery.md", "docs/tti/report-comparison.md", "docs/tti/system-map.md", "docs/tti/skills-matrix.md", "docs/tti/decision-log.md", "docs/tti/risks.md", "docs/tti/requirements-matrix.md", "docs/tti/reports/PHASE-01-REPORT.md", "docs/tti/product-spec.md", "docs/tti/content-matrix.md", "docs/tti/copy-deck.md", "docs/tti/claims-register.md", "docs/tti/offer-schema.md", "docs/tti/reports/PHASE-02-REPORT.md", "docs/tti/brand-sheet.md", "docs/tti/ux-spec.md", "docs/tti/interaction-states.md", "docs/tti/reports/PHASE-03-REPORT.md", "docs/tti/design-system.md", "docs/tti/visual-direction.md", "docs/tti/asset-registry.md", "docs/tti/design-review.md", "docs/tti/reports/PHASE-04-REPORT.md", "docs/tti/configuration-contract.md", "docs/tti/reports/PHASE-05-REPORT.md", "docs/tti/reports/PHASE-06-REPORT.md", "docs/tti/sheet-field-map.md", "docs/tti/reports/PHASE-07-REPORT.md", "docs/tti/reports/REDESIGN-REPORT.md"],
+  "next_actions": ["choose persistence/auth provider based on verified infrastructure", "implement synthetic import test harness and protected admin CRUD once store is configured", "keep live catalog/admin activation disabled until identities and Sheet access are verified"],
+  "company_catalog_source": {"spreadsheet_id": "1wC_EScBRSJOqfS3KFlFlargOlTNT65cOJOhDzEGQ-TE", "gid": "1480331144", "source_access": "NOT_VERIFIED", "mode": "controlled_read_only_import_into_admin_managed_catalog", "writeback_authorized": false},
+  "private_admin": {"launch_required": true, "approved_people": ["Aleksa Cvetanovic", "TTI owner"], "verified_auth_subject_ids": [], "access": "deny_until_two_identities_verified", "company_management": "create_edit_publish_unpublish_archive_restore", "posts": "future_extension_plan_only"}
+}
