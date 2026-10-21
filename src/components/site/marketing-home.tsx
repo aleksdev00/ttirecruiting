@@ -42,7 +42,7 @@ export default function MarketingHome() {
           <div className="marketing-hero-copy">
             <p className="marketing-eyebrow"><span aria-hidden /> CDL recruiting, made clearer</p>
             <h1>Find a driving job that fits your <i>life.</i></h1>
-            <p className="marketing-hero-lede">TTI helps CDL-A drivers compare the details that matter — route, home time, equipment, and application path — before they take the next step.</p>
+            <p className="marketing-hero-lede">Search for the kind of CDL-A work you want, compare the details that matter, and get help taking the right application path.</p>
             <div className="marketing-actions">
               <Link className="marketing-button marketing-button-primary" href="/jobs">Find My Next Driving Job <span aria-hidden>↗</span></Link>
               <Link className="marketing-button marketing-button-secondary" href="/contact">Talk With a Recruiter</Link>
@@ -59,6 +59,11 @@ export default function MarketingHome() {
             </div>
             <p className="marketing-finder-note">No pressure. No public document upload. Just a clearer next step.</p>
           </div>
+        </section>
+
+        <section className="marketplace-search" aria-labelledby="search-title">
+          <div><p className="marketing-eyebrow">Find your next opportunity</p><h2 id="search-title">Search by the work you want.</h2><p>Start with a route, location, or home-time preference. We only publish offer details after review.</p></div>
+          <form className="marketplace-search-form" action="/jobs"><label htmlFor="job-search">Search opportunities</label><div><input id="job-search" name="q" placeholder="Try “regional flatbed”" /><button type="submit">Search jobs <span aria-hidden>↗</span></button></div><div className="marketplace-filter-links"><Link href="/jobs?driverType=otr">OTR</Link><Link href="/jobs?driverType=regional">Regional</Link><Link href="/jobs?driverType=local">Local</Link><Link href="/jobs?homeTime=daily">Daily home time</Link></div></form>
         </section>
 
         <section className="marketing-proof-rail" aria-label="TTI Recruiting principles">
