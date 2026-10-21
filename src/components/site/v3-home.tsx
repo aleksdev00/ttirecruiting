@@ -1,350 +1,40 @@
-import Image from "next/image";
 import Link from "next/link";
 import { DRIVING_TYPES } from "@/lib/brand";
-import { FULL_APPLICATION_URL } from "@/lib/site";
 import { V3FAQ } from "@/components/site/v3-faq";
 import { V3QuickApply } from "@/components/site/v3-quick-apply";
 
-const MAST_IMG =
-  "https://images.unsplash.com/photo-1516319915504-015b432d407c?auto=format&fit=crop&w=1800&q=80";
+const routes = [
+  { code: "W-2", title: "Continue the application", copy: "Use the existing driver application when the confirmed opportunity follows the W-2 path.", href: "/apply", tone: "light" },
+  { code: "1099", title: "Talk it through first", copy: "A recruiter guides this intake. This public site does not collect CDL or medical documents.", href: "/contact?type=1099", tone: "signal" },
+] as const;
 
 export default function V3Home() {
   return (
-    <div className="v3-root flex flex-col bg-paper text-ink">
-      {/* ==================== MASTHEAD / COVER ==================== */}
-      <section className="v3-mast relative border-b border-ink/15 bg-paper text-ink">
-        <div className="mx-auto w-full max-w-[1440px] px-4 pb-8 pt-10 sm:px-6 lg:px-10 lg:pt-14">
-          <div className="flex items-center justify-between border-y border-ink/20 py-3 font-ledger text-[10px] font-semibold uppercase tracking-[0.3em] text-ink-faint">
-            <p>The Dispatch</p>
-            <p className="hidden sm:inline">Vol. 03 / Issue 01</p>
-            <p>U.S. market</p>
-          </div>
+    <main className="route-desk">
+      <section className="route-hero">
+        <header className="route-header">
+          <Link href="/" className="route-logo" aria-label="TTI Recruiting home"><span className="route-logo-mark">TTI</span><span className="route-logo-copy">Recruiting</span></Link>
+          <nav className="route-nav" aria-label="Primary navigation"><Link href="/jobs">Opportunities</Link><Link href="/how-it-works">How it works</Link><Link href="/faq">Questions</Link><Link href="/contact" className="route-nav-cta">Talk with a recruiter <span aria-hidden>↗</span></Link></nav>
+          <details className="route-mobile-menu"><summary aria-label="Open navigation menu"><span aria-hidden>Menu</span><span aria-hidden>+</span></summary><nav aria-label="Mobile navigation"><Link href="/jobs">Opportunities</Link><Link href="/how-it-works">How it works</Link><Link href="/faq">Questions</Link><Link href="/contact">Talk with a recruiter</Link></nav></details>
+        </header>
 
-          <div className="mt-8 grid items-stretch gap-10 lg:grid-cols-12 lg:gap-8">
-            <div className="flex flex-col justify-center lg:col-span-7">
-              <p className="v3-fade v3-d1 font-ledger text-xs font-semibold uppercase tracking-[0.3em] text-signal-deep">
-                CDL driver placement / OTR to local
-              </p>
-
-              <h1 className="mt-6 font-display text-[clamp(3rem,7.5vw,7rem)] uppercase leading-[0.85] tracking-tight">
-                <span className="v3-mline v3-l1">
-                  <span className="v3-mline-txt">
-                    OTR<span className="text-signal-deep">.</span>
-                  </span>
-                </span>
-                <span className="v3-mline v3-l2">
-                  <span className="v3-mline-txt ml-[0.5em] sm:ml-[0.9em]">
-                    Regional<span className="text-signal-deep">.</span>
-                  </span>
-                </span>
-                <span className="v3-mline v3-l3">
-                  <span className="v3-mline-txt ml-[1em] sm:ml-[1.8em]">
-                    Local<span className="text-signal-deep">.</span>
-                  </span>
-                </span>
-                <span className="v3-mline v3-l4">
-                  <span className="v3-mline-txt ml-[1.5em] sm:ml-[2.7em]">
-                    Dedicated<span className="text-signal-deep">.</span>
-                  </span>
-                </span>
-              </h1>
-
-              <p className="v3-fade v3-d2 mt-7 max-w-md text-lg leading-relaxed text-ink">
-                Tell us what you're looking for. We'll review your profile and
-                contact you when we find a matching opportunity.
-              </p>
-
-              <div className="v3-fade v3-d3 mt-9 flex flex-col gap-4 sm:flex-row sm:flex-wrap sm:items-center">
-                <Link
-                  href="#quick-apply"
-                  className="group inline-flex h-14 w-full items-center justify-center gap-3 bg-signal-deep px-9 font-ledger text-xs font-semibold uppercase tracking-[0.2em] text-paper transition-colors hover:bg-ink hover:text-paper sm:w-auto"
-                >
-                  Quick apply
-                  <span aria-hidden className="transition-transform group-hover:translate-x-1">
-                    &rarr;
-                  </span>
-                </Link>
-              </div>
-
-              <p className="v3-ticker mt-10 flex flex-wrap items-center gap-x-3 gap-y-2 border-t border-ink/20 pt-5 font-ledger text-[11px] font-semibold uppercase tracking-[0.26em] text-ink-faint">
-                {DRIVING_TYPES.map((t, i) => (
-                  <span key={t.slug} className="flex items-center gap-3">
-                    {i > 0 && (
-                      <span aria-hidden className="text-signal-deep">
-                        &rarr;
-                      </span>
-                    )}
-                    {t.label}
-                  </span>
-                ))}
-              </p>
-            </div>
-
-            <div className="relative min-h-[360px] self-stretch overflow-hidden border border-ink/20 bg-paper-deep lg:col-span-5 lg:min-h-[560px]">
-              <Image
-                src={MAST_IMG}
-                alt="Semi truck rolling down an open highway at dusk"
-                fill
-                sizes="(min-width: 1024px) 42vw, 100vw"
-                priority
-                className="v3-photo-img object-cover object-center"
-              />
-              <div className="absolute inset-0 bg-ink/15" aria-hidden="true" />
-              <div
-                className="absolute inset-0 bg-gradient-to-t from-ink/55 via-transparent to-ink/20"
-                aria-hidden="true"
-              />
-              <p className="absolute left-3 top-3 font-ledger text-[10px] font-semibold uppercase tracking-[0.26em] text-paper">
-                Fig. 01
-              </p>
-              <p className="absolute bottom-3 left-3 font-ledger text-[10px] font-semibold uppercase tracking-[0.26em] text-paper/85">
-                I-70 / Night run
-              </p>
-            </div>
-          </div>
-
-          <div className="mt-8">
-            <div className="v3-rail" aria-hidden="true">
-              <div className="v3-rail-fill" />
-            </div>
-            <div className="mt-3 flex items-center justify-between font-ledger text-[10px] font-semibold uppercase tracking-[0.26em] text-ink-faint">
-              <span>Origin / Kansas City, MO</span>
-              <span className="hidden sm:inline">Lanes 04</span>
-              <span>Destination / your week</span>
-            </div>
-          </div>
-        </div>
+        <div className="route-hero-grid"><div className="route-hero-copy"><p className="route-kicker"><span className="route-kicker-dot" aria-hidden />The driver desk / U.S. market</p><h1>Find the lane that fits <em>your life.</em></h1><p className="route-hero-intro">TTI Recruiting helps CDL-A drivers understand real next steps — from the kind of work you want to the application that actually fits.</p><div className="route-actions"><Link href="/jobs" className="route-button route-button-primary">Explore opportunities <span aria-hidden>↗</span></Link><Link href="/contact" className="route-button route-button-quiet">Talk with a recruiter</Link></div><p className="route-fine-print">TTI is the recruiter/intermediary. The hiring carrier makes the final employment decision.</p></div><div className="route-hero-board" aria-label="The route desk at a glance"><div className="route-board-top"><span>Route desk</span><span>01 / 03</span></div><div className="route-board-line" aria-hidden /><div className="route-board-main"><span className="route-board-label">Start with what matters</span><strong>Home time</strong><span className="route-board-arrow" aria-hidden>→</span></div><div className="route-board-facts"><span>Experience</span><span>Equipment</span><span>Employment path</span></div><div className="route-board-footer"><span>One clear next step</span><span aria-hidden>✦</span></div></div></div>
+        <div className="route-hero-rail" aria-hidden><span /><span /><span /><span /></div><div className="route-hero-meta"><span>OTR</span><span>Regional</span><span>Local</span><span>Dedicated</span></div>
       </section>
 
-      {/* ==================== QUICK APPLY / LEAD FORM ==================== */}
       <V3QuickApply />
 
-      {/* ==================== FRONT SHEET / THE LEDGER ==================== */}
-      <section className="v3-sheet border-b border-ink/15 bg-paper-deep text-ink">
-        <div className="mx-auto grid w-full max-w-[1440px] gap-14 px-4 py-20 sm:px-6 lg:grid-cols-12 lg:px-10 lg:py-28">
-          <div className="lg:col-span-6">
-            <p className="v3-word font-ledger text-xs font-semibold uppercase tracking-[0.3em] text-signal-deep">
-              How the desk works
-            </p>
-            <h2 className="v3-word mt-5 font-display text-[clamp(2.4rem,5.2vw,4.75rem)] uppercase leading-[0.88] tracking-tight">
-              We do the legwork<span className="text-signal-deep">.</span>
-            </h2>
-            <p className="v3-fact mt-7 max-w-md text-lg leading-relaxed text-ink-muted">
-              No forced miles, no mystery dispatches. You see the freight, home
-              time, and pay on every load before you commit to the run.
-            </p>
+      <section className="route-section route-section-paper" aria-labelledby="route-fit-heading"><div className="route-section-heading"><p className="route-kicker">Your next move</p><h2 id="route-fit-heading">Start with the route.<br /><em>Not the paperwork.</em></h2></div><div className="route-route-list">{DRIVING_TYPES.map((type, index) => <Link href="/jobs" className="route-type-row" key={type.slug}><span className="route-type-number">0{index + 1}</span><strong>{type.label}</strong><span>{type.blurb}</span><span className="route-row-arrow" aria-hidden>↗</span></Link>)}</div></section>
 
-            <ul className="v3-fact mt-9 space-y-3 border-t border-ink/15 pt-6">
-              {(
-                [
-                  ["Freight", "See the load before you commit"],
-                  ["Home time", "Shown up front, planned around you"],
-                  ["Pay", "Rates up front, not a mystery"],
-                  ["Equipment", "Know the gear before the pre-trip"],
-                ] as const
-              ).map(([k, v]) => (
-                <li
-                  key={k}
-                  className="flex items-baseline justify-between gap-4 pb-3 text-sm"
-                >
-                  <span className="flex items-baseline gap-3 font-ledger text-[11px] font-semibold uppercase tracking-[0.22em]">
-                    <span className="inline-block h-2 w-2 bg-signal-deep" aria-hidden="true" />
-                    {k}
-                  </span>
-                  <span className="text-ink-muted">{v}</span>
-                </li>
-              ))}
-            </ul>
-          </div>
+      <section className="route-section route-section-ink" aria-labelledby="route-process-heading"><div className="route-section-heading"><p className="route-kicker route-kicker-invert">A simpler handoff</p><h2 id="route-process-heading">Know what happens<br /><em>before you go.</em></h2></div><ol className="route-process-list"><li><span>01</span><div><h3>Tell us what fits</h3><p>Share the route, home time, and work questions that matter to you.</p></div></li><li><span>02</span><div><h3>See the right next step</h3><p>We explain whether the opportunity uses W-2 application or recruiter-assisted 1099 intake.</p></div></li><li><span>03</span><div><h3>Continue with clarity</h3><p>You choose whether to continue. No promise of placement — no mystery about the handoff.</p></div></li></ol></section>
 
-          <div className="lg:col-span-6">
-            <div className="h-full border border-ink/20">
-              {(
-                [
-                  [String(DRIVING_TYPES.length), "Driving lanes served"],
-                  [String(DRIVING_TYPES.length), "Driving types served"],
-                  ["03", "Equipment types / Flatbed / Reefer / Dry Van"],
-                ["04", "Coverage / U.S. market"],
-                ] as const
-              ).map(([figure, label], i) => (
-                <div
-                  key={label}
-                  className="v3-ledger-row grid grid-cols-[3rem_1fr] items-center gap-4 border-b border-ink/15 px-5 py-6 last:border-b-0 sm:py-8"
-                >
-                  <span className="font-ledger text-[11px] font-semibold tracking-[0.2em] text-ink-faint">
-                    0{i + 1}
-                  </span>
-                  <div className="flex flex-col items-baseline justify-between gap-1 sm:flex-row sm:items-center">
-                    <span className="font-display text-4xl uppercase leading-none tracking-tight sm:text-5xl">
-                      {figure}
-                    </span>
-                    <span className="max-w-[34ch] font-ledger text-[10px] font-semibold uppercase tracking-[0.2em] text-ink-faint sm:text-right">
-                      {label}
-                    </span>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
-        </div>
-      </section>
+      <section className="route-section route-section-paper route-apply-section" aria-labelledby="route-apply-heading"><div className="route-section-heading"><p className="route-kicker">Choose your path</p><h2 id="route-apply-heading">Two paths.<br /><em>One clear start.</em></h2></div><div className="route-path-grid">{routes.map((route) => <article className={`route-path-card route-path-${route.tone}`} key={route.code}><span className="route-path-code">{route.code}</span><h3>{route.title}</h3><p>{route.copy}</p><Link href={route.href}>{route.tone === "light" ? "See the application path" : "Talk through 1099 work"} <span aria-hidden>↗</span></Link></article>)}</div></section>
 
-      {/* ==================== HOW MATCHING WORKS ==================== */}
-      <section className="v3-sheet border-b border-ink/15 bg-paper text-ink">
-        <div className="mx-auto grid w-full max-w-[1440px] gap-14 px-4 py-20 sm:px-6 lg:grid-cols-12 lg:px-10 lg:py-28">
-          <div className="lg:col-span-5">
-            <p className="v3-word font-ledger text-xs font-semibold uppercase tracking-[0.3em] text-signal-deep">
-              How matching works
-            </p>
-            <h2 className="v3-word mt-5 font-display text-[clamp(2.2rem,4.6vw,4.25rem)] uppercase leading-[0.88] tracking-tight">
-              Apply once.{" "}
-              <span className="text-signal-deep">We do the matching.</span>
-            </h2>
-            <p className="v3-fact mt-7 max-w-md text-lg leading-relaxed text-ink-muted">
-              One application is enough. Tell us what you're looking for, and
-              we do the calling around.
-            </p>
-          </div>
+      <section className="route-section route-section-soft" aria-labelledby="route-opportunities-heading"><div className="route-opportunity-header"><div className="route-section-heading"><p className="route-kicker">The opportunity desk</p><h2 id="route-opportunities-heading">Current openings,<br /><em>when they are confirmed.</em></h2></div><Link href="/jobs" className="route-text-link">Browse the desk <span aria-hidden>↗</span></Link></div><div className="route-empty-card"><div><span className="route-empty-status"><span aria-hidden />Catalog refresh in progress</span><h3>We are not showing unverified offers as current openings.</h3><p>Want to talk through what may fit? A recruiter can help you choose the next step.</p></div><Link href="/contact" className="route-button route-button-dark">Talk with a recruiter <span aria-hidden>↗</span></Link></div></section>
 
-          <div className="lg:col-span-7">
-            <ol className="v3-fact space-y-0 border-t border-ink/15">
-              {(
-                [
-                  [
-                    "01",
-                    "Tell us what you want",
-                    "Route, home time, equipment, and how you like to work. Nothing else is required to start.",
-                  ],
-                  [
-                    "02",
-                    "We review your profile",
-                    "Experience, location, preferred route, home time, and employment type against current carrier opportunities.",
-                  ],
-                  [
-                    "03",
-                    "We call you on a match",
-                    "Recruiting reaches out directly when a potentially suitable opportunity comes up. No match, no pressure.",
-                  ],
-                ] as const
-              ).map(([i, k, v]) => (
-                <li
-                  key={i}
-                  className="grid grid-cols-[2.5rem_1fr] items-baseline gap-4 border-b border-ink/15 py-6 last:border-b-0 sm:py-7"
-                >
-                  <span className="font-ledger text-[11px] font-semibold tracking-[0.2em] text-ink-faint">
-                    {i}
-                  </span>
-                  <div className="flex flex-col gap-1 sm:flex-row sm:items-baseline sm:justify-between">
-                    <span className="font-display text-xl uppercase leading-none tracking-tight sm:text-2xl">
-                      {k}
-                    </span>
-                    <span className="max-w-[36ch] text-sm leading-relaxed text-ink-muted">
-                      {v}
-                    </span>
-                  </div>
-                </li>
-              ))}
-            </ol>
-
-            <div className="mt-8 flex flex-wrap items-center gap-4">
-              <Link
-                href="#quick-apply"
-                className="group inline-flex h-14 items-center justify-center gap-3 bg-signal-deep px-9 font-ledger text-xs font-semibold uppercase tracking-[0.2em] text-paper transition-colors hover:bg-ink hover:text-paper"
-              >
-                Quick apply
-                <span aria-hidden className="transition-transform group-hover:translate-x-1">
-                  &rarr;
-                </span>
-              </Link>
-              <p className="max-w-[24ch] font-ledger text-[10px] font-semibold uppercase tracking-[0.2em] text-ink-faint">
-                No guarantee of placement -- only a call when there is a real
-                fit.
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* ==================== FAQ ==================== */}
       <V3FAQ />
-
-      {/* ==================== FINALE PLATE / KNOW BEFORE YOU RUN ==================== */}
-      <section className="v3-plate bg-ink text-paper">
-        <div className="mx-auto grid w-full max-w-[1440px] gap-14 px-4 py-24 sm:px-6 lg:grid-cols-12 lg:px-10 lg:py-32">
-          <div className="lg:col-span-7">
-            <p className="v3-fade font-ledger text-xs font-semibold uppercase tracking-[0.3em] text-paper">
-              Not sure what fits?
-            </p>
-            <h2 className="mt-5 font-display text-[clamp(2.8rem,7vw,6.5rem)] uppercase leading-[0.86] tracking-tight">
-              <span className="v3-mline">
-                <span className="v3-mline-txt">Know before</span>
-              </span>
-              <span className="v3-mline">
-                <span className="v3-mline-txt">
-                  you run<span className="text-signal">.</span>
-                </span>
-              </span>
-            </h2>
-            <p className="v3-fade mt-7 max-w-md text-lg leading-relaxed text-paper/70">
-              One recruiting desk working the market for you, end to end. Tell
-              us what you're looking for and we call when there is a real fit.
-            </p>
-          </div>
-
-          <div className="flex flex-col justify-end lg:col-span-5">
-            <ul className="v3-fade space-y-0 border-t border-paper/25">
-              {(
-                [
-                  ["01", "Freight", "See the load"],
-                  ["02", "Home time", "Shown up front"],
-                  ["03", "Pay", "Rates up front"],
-                  ["04", "Gear", "No surprises at the pre-trip"],
-                ] as const
-              ).map(([i, k, v]) => (
-                <li
-                  key={i}
-                  className="flex items-baseline gap-4 border-b border-paper/25 py-4"
-                >
-                  <span className="font-ledger text-[11px] font-semibold tracking-[0.2em] text-paper">
-                    {i}
-                  </span>
-                  <span className="font-ledger text-xs font-semibold uppercase tracking-[0.22em]">
-                    {k}
-                  </span>
-                  <span className="ml-auto font-ledger text-[11px] uppercase tracking-[0.18em] text-paper/60">
-                    {v}
-                  </span>
-                </li>
-              ))}
-            </ul>
-
-            <div className="v3-fade mt-9 flex flex-col gap-4 sm:flex-row sm:flex-wrap sm:items-center">
-              <Link
-                href="#quick-apply"
-                className="group inline-flex h-14 w-full items-center justify-center gap-3 bg-signal px-9 font-ledger text-xs font-semibold uppercase tracking-[0.2em] text-paper transition-colors hover:bg-signal-deep sm:w-auto"
-              >
-                Quick apply
-                <span aria-hidden className="transition-transform group-hover:translate-x-1">
-                  &rarr;
-                </span>
-              </Link>
-            </div>
-
-            <p className="v3-fade mt-8 font-ledger text-[10px] font-semibold uppercase tracking-[0.22em] text-paper/50">
-              Already matched by recruiting?{" "}
-              <Link
-                href={FULL_APPLICATION_URL}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="underline underline-offset-4 transition-colors hover:text-signal"
-              >
-                Complete the full application
-              </Link>
-              .
-            </p>
-          </div>
-        </div>
-      </section>
-    </div>
+      <section className="route-final-cta"><p className="route-kicker route-kicker-invert">Not sure where to start?</p><h2>Bring the question.<br /><em>We&apos;ll find the next step.</em></h2><Link href="/contact" className="route-button route-button-signal">Talk with a recruiter <span aria-hidden>↗</span></Link></section>
+      <footer className="route-footer"><div className="route-footer-brand"><span className="route-logo-mark">TTI</span><span>Recruiting</span></div><p>Recruiting support for drivers who want a clearer route.</p><div className="route-footer-links"><Link href="/privacy">Privacy</Link><Link href="/terms">Terms</Link><Link href="/for-carriers">For carriers</Link></div></footer>
+    </main>
   );
 }

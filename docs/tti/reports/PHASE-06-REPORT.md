@@ -2,7 +2,7 @@
 
 ## Status and result
 
-Status: PARTIAL. Added substantive public route shells for jobs, apply, how-it-works, FAQ, and carrier inquiries using the selected visual tokens. The pages distinguish W-2 handoff, recruiter-assisted 1099 intake, carrier contact, catalog-unavailable states, and contact requests. No unverified offers, testimonials, statistics, partner claims, or fake success receipts were added.
+Status: PARTIAL. Added substantive public route shells for jobs, apply, how-it-works, FAQ, and carrier inquiries using the selected visual tokens, then rebuilt the homepage into a route-desk system with new hierarchy, navigation, CTA language, route rows, path cards, and catalog state. The pages distinguish W-2 handoff, recruiter-assisted 1099 intake, carrier contact, catalog-unavailable states, and contact requests. No unverified offers, testimonials, statistics, partner claims, or fake success receipts were added.
 
 ## Routes implemented
 

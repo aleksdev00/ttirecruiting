@@ -2,7 +2,7 @@
 
 ## Status and result
 
-Status: PARTIAL. A coherent visual direction, token guidance, component states, asset registry, and admin/public design review plan are documented. The repository's existing v3 implementation is the working prototype surface. No new photography or fabricated proof assets were added.
+Status: PARTIAL. A coherent visual direction, token guidance, component states, asset registry, and admin/public design review plan are documented. The public homepage has now been rebuilt as a route-desk composition using the existing tokens. No new photography or fabricated proof assets were added.
 
 ## Acceptance
 
