@@ -9,6 +9,7 @@
 | skillui | Not present in the available skill catalog | User-requested UI design capability | 04, 06 | UNAVAILABLE | No installed `skillui` skill was discoverable; pro-design and existing token/component guidance used as fallback. |
 | SkillUI CLI (`amaancoderx/npxskillui`) | Local source checkout `E:\ttirecruiting_New_website\skillui-source` | Static extraction of repository design tokens/components | 04, 06 | USED | Built from source and scanned this repository; generated `docs/tti/skillui-extraction/`. Global npm install was blocked by `esbuild` postinstall spawn failure. |
 | Next.js / React guidance | Repository `AGENTS.md` and bundled Next docs | Existing App Router implementation | 05 onward | USED | Repository instructions read; local Next docs are available. |
+| React best practices | `C:\Users\aleks\.codex\plugins\cache\openai-curated-remote\vercel\0.54.1\skills\react-best-practices\SKILL.md` | Component structure, hooks, accessibility, performance | 06, 07 | USED | Instructions read; applied to route components and hook ordering; typecheck/lint pass. |
 | Auth/security | Available security/auth skill families | Two-person admin and protected mutations | 05, 10 | PLANNED | Must be selected after existing provider/configuration is identified. |
 | Supabase / Postgres | Supabase skill family | Only if existing persistence uses Supabase | 05, 07-10 | PLANNED | No Supabase configuration or schema found yet. |
 | Vercel | Vercel skill families | Preview/release and environment configuration | 11, 13 | PLANNED | No Vercel project linkage verified. |

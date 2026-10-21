@@ -1,7 +1,16 @@
+"use client";
+
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { BRAND } from "@/lib/brand";
 
 export function V3Footer() {
+  const pathname = usePathname();
+
+  if (["/", "/jobs", "/apply", "/faq", "/for-carriers", "/how-it-works"].includes(pathname) || pathname.startsWith("/jobs/")) {
+    return null;
+  }
+
   return (
     <footer className="border-t border-ink/15 bg-paper text-ink">
       <div className="mx-auto w-full max-w-[1440px] px-4 pb-8 pt-14 sm:px-6 lg:px-10">

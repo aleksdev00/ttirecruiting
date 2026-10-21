@@ -23,6 +23,8 @@ export function V3SiteNav() {
   const toggleRef = React.useRef<HTMLButtonElement>(null);
   const panelRef = React.useRef<HTMLDivElement>(null);
 
+  const shouldHide = ["/", "/jobs", "/apply", "/faq", "/for-carriers", "/how-it-works"].includes(pathname) || pathname.startsWith("/jobs/");
+
   React.useEffect(() => {
     if (!open) return;
     const prevOverflow = document.body.style.overflow;
@@ -55,6 +57,8 @@ export function V3SiteNav() {
       window.removeEventListener("resize", onResize);
     };
   }, [open]);
+
+  if (shouldHide) return null;
 
   return (
     <header className="sticky top-0 z-40 border-b border-ink/15 bg-paper text-ink">
