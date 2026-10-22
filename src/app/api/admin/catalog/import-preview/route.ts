@@ -19,3 +19,7 @@ export async function GET() {
     { status: 503, headers: { "Cache-Control": "no-store" } },
   );
 }
+
+export async function POST() {
+  return GET();
+}
