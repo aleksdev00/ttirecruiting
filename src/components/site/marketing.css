@@ -224,5 +224,11 @@
 .admin-deferred { padding: 23px; }
 .admin-deferred h2 { font-size: 29px; letter-spacing: -.05em; margin: 9px 0; }
 .admin-deferred p { color: #617174; font-size: 13px; margin: 0; }
+.admin-state-page { align-items: center; background: var(--admin-paper); display: flex; justify-content: center; min-height: 100vh; padding: 24px; }
+.admin-state-card { background: var(--admin-white); border: 1px solid var(--admin-line); max-width: 530px; padding: clamp(32px, 7vw, 72px); width: 100%; }
+.admin-state-logo { align-items: center; background: var(--admin-ink); color: var(--admin-white); display: flex; font-size: 13px; font-weight: 800; height: 38px; justify-content: center; letter-spacing: .08em; margin-bottom: 48px; width: 50px; }
+.admin-state-card h1 { font-size: clamp(40px, 7vw, 68px); letter-spacing: -.07em; line-height: .94; margin: 14px 0 18px; }
+.admin-state-card p { color: #617174; font-size: 15px; line-height: 1.6; margin: 0 0 30px; }
+.admin-state-card small { color: #617174; display: block; font-size: 11px; line-height: 1.5; margin-top: 28px; }
 @media (max-width: 760px) { .admin-topbar-actions { gap: 0; } .admin-synthetic { display: none; } .admin-layout { grid-template-columns: 1fr; } .admin-sidebar { min-height: auto; } .admin-sidebar nav { grid-template-columns: repeat(4, 1fr); } .admin-sidebar nav a { justify-content: center; padding: 10px 5px; } .admin-sidebar nav a svg { display: none; } .admin-sidebar-note { margin-top: 18px; } .admin-stat-grid { grid-template-columns: 1fr; } .admin-heading-row, .admin-panel-heading { align-items: start; flex-direction: column; } .admin-import-metrics { grid-template-columns: repeat(2, 1fr); gap: 22px; } }
 @media (prefers-reduced-motion: reduce) { .marketing-button { transition: none; } .marketing-button:hover { transform: none; } }

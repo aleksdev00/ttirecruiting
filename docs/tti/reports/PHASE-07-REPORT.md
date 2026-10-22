@@ -1,14 +1,25 @@
 # Phase 07 report: Offer catalog and publishing
 
-## Status and result
+## Status
 
-Status: BLOCKED/PARTIAL. The safe independent catalog boundary is now typed, the exact Sheet source contract is recorded, the field-map blocker is explicit, and `/admin` fails closed with a noindex unavailable state. No live source rows, public offers, persistence, or production admin access were fabricated.
+Status: BLOCKED / partial implementation.
+
+The catalog boundary remains typed and fail-closed. The admin visual experience now has a marketplace-aligned workspace, protected state screens, company review surface, import conflict review, and a future-post extension point. Production catalog activation remains blocked because the real Sheet schema, persistence provider, and exact authorized identity subjects are not verified.
+
+## Implemented
+
+- Marketplace-aligned admin preview at `/admin/preview` using clearly labelled synthetic records.
+- Login, unauthorized, and expired-session states at `/admin/login`, `/admin/unauthorized`, and `/admin/session-expired`.
+- Company list, status badges, search surface, dashboard counts, import dry-run metrics, conflict warning, and future Posts boundary.
+- Real `/admin` route remains server-side fail-closed and unlinked from public navigation.
 
 ## Verification
 
-- Live Sheet headers/access: blocked; no export was reachable.
-- Admin page: server-only authorization primitive returns `AUTH_NOT_CONFIGURED` when identity configuration is absent; no catalog data is rendered.
-- Typecheck/lint/build: rerun after these changes in the next verification pass.
+- `npm.cmd run typecheck`: passed.
+- `npm.cmd run lint`: passed.
+- `npm.cmd run build`: passed; 22 routes generated.
+- `git diff --check`: passed.
+- No live catalog data, Sheet rows, production credentials, or admin identity allowlist were exposed.
 
 ## Blocking dependencies
 
@@ -16,4 +27,4 @@ Status: BLOCKED/PARTIAL. The safe independent catalog boundary is now typed, the
 2. Actual identity-provider session contract and exactly two immutable approved subject IDs.
 3. Authoritative catalog persistence configuration; no second candidate database should be created.
 
-Synthetic fixtures and importer tests can proceed after the repository’s test harness is selected. Production catalog activation remains disabled.
+Synthetic fixtures and importer tests can proceed after the repository test harness and persistence contract are selected. Production catalog activation remains disabled.
