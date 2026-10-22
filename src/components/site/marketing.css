@@ -281,6 +281,15 @@
 .admin-conflict-list span { color: #617174; font-size: 11px; }
 .admin-conflict-list strong { font-size: 13px; }
 .admin-conflict-list small { color: #617174; font-size: 11px; grid-column: 2; }
+.admin-import-source { background: #e7efec; display: flex; flex-wrap: wrap; gap: 9px 18px; margin: 0 23px 22px; padding: 14px; }
+.admin-import-source strong, .admin-import-source span { font-size: 11px; }
+.admin-import-source strong { color: var(--admin-ink); }
+.admin-import-source span { color: #617174; }
+.admin-import-table td:nth-child(4) { max-width: 300px; white-space: normal; }
+.admin-status-create { background: #e3f2ed; border-color: #9dcdbd; }
+.admin-status-unchanged { background: var(--admin-paper); }
+.admin-status-conflict { background: #fff7e9; border-color: #ebd1a6; }
+.admin-status-quarantine { background: #f2eeee; color: #7c6464; }
 @media (max-width: 700px) { .admin-editor-heading { align-items: start; flex-direction: column; } .admin-form-grid { grid-template-columns: 1fr; } .admin-editor-actions { flex-wrap: wrap; } .admin-editor-actions button { flex: 1; } }
 @media (max-width: 820px) { .admin-state-preview-grid { grid-template-columns: 1fr; } }
 .admin-state-page { align-items: center; background: var(--admin-paper); display: flex; justify-content: center; min-height: 100vh; padding: 24px; }
