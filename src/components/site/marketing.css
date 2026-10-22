@@ -269,7 +269,20 @@
 .admin-editor-warning strong { color: #765d3c; font-size: 12px; }
 .admin-editor-warning span { color: #765d3c; font-size: 12px; }
 .admin-editor-actions { display: flex; justify-content: flex-end; gap: 10px; }
+.admin-states-layout { margin: 0 auto; max-width: 1100px; padding: 48px clamp(18px, 5vw, 72px) 80px; }
+.admin-state-preview-grid { display: grid; gap: 20px; grid-template-columns: repeat(2, 1fr); }
+.admin-confirm-copy { padding: 23px; }
+.admin-confirm-copy p { color: #617174; font-size: 14px; line-height: 1.6; margin: 0 0 20px; }
+.admin-confirm-check { align-items: start; color: var(--admin-ink); display: flex; font-size: 12px; gap: 9px; line-height: 1.5; }
+.admin-confirm-check input { accent-color: var(--admin-blue); margin-top: 2px; }
+.admin-danger-button { background: #9a4d43; border: 0; color: var(--admin-white); cursor: pointer; font-size: 13px; font-weight: 800; min-height: 45px; padding: 0 16px; }
+.admin-conflict-list { margin: 0 23px; }
+.admin-conflict-list div { border-bottom: 1px solid var(--admin-line); display: grid; gap: 5px; grid-template-columns: 100px 1fr; padding: 14px 0; }
+.admin-conflict-list span { color: #617174; font-size: 11px; }
+.admin-conflict-list strong { font-size: 13px; }
+.admin-conflict-list small { color: #617174; font-size: 11px; grid-column: 2; }
 @media (max-width: 700px) { .admin-editor-heading { align-items: start; flex-direction: column; } .admin-form-grid { grid-template-columns: 1fr; } .admin-editor-actions { flex-wrap: wrap; } .admin-editor-actions button { flex: 1; } }
+@media (max-width: 820px) { .admin-state-preview-grid { grid-template-columns: 1fr; } }
 .admin-state-page { align-items: center; background: var(--admin-paper); display: flex; justify-content: center; min-height: 100vh; padding: 24px; }
 .admin-state-card { background: var(--admin-white); border: 1px solid var(--admin-line); max-width: 530px; padding: clamp(32px, 7vw, 72px); width: 100%; }
 .admin-state-logo { align-items: center; background: var(--admin-ink); color: var(--admin-white); display: flex; font-size: 13px; font-weight: 800; height: 38px; justify-content: center; letter-spacing: .08em; margin-bottom: 48px; width: 50px; }
