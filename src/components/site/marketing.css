@@ -256,6 +256,20 @@
 .admin-deferred { padding: 23px; }
 .admin-deferred h2 { font-size: 29px; letter-spacing: -.05em; margin: 9px 0; }
 .admin-deferred p { color: #617174; font-size: 13px; margin: 0; }
+.admin-editor-layout { margin: 0 auto; max-width: 1100px; padding: 48px clamp(18px, 5vw, 72px) 80px; }
+.admin-editor-heading { align-items: end; display: flex; gap: 24px; justify-content: space-between; margin-bottom: 30px; }
+.admin-editor-heading h1 { font-size: clamp(40px, 5vw, 68px); letter-spacing: -.07em; line-height: .95; margin: 12px 0 10px; }
+.admin-editor-heading p { color: #617174; font-size: 14px; line-height: 1.5; margin: 0; max-width: 580px; }
+.admin-editor-form { display: grid; gap: 20px; }
+.admin-form-grid { display: grid; gap: 18px; grid-template-columns: repeat(2, 1fr); padding: 23px; }
+.admin-form-grid label { color: var(--admin-ink); display: grid; font-size: 12px; font-weight: 800; gap: 8px; }
+.admin-form-grid input, .admin-form-grid select { background: var(--admin-paper); border: 1px solid var(--admin-line); color: var(--admin-ink); font: inherit; font-size: 13px; min-height: 44px; padding: 0 11px; }
+.admin-form-grid input:focus, .admin-form-grid select:focus { outline: 3px solid var(--admin-teal); outline-offset: 2px; }
+.admin-editor-warning { background: #fff7e9; border: 1px solid #ebd1a6; display: flex; flex-wrap: wrap; gap: 8px 20px; grid-column: 1 / -1; margin-top: 4px; padding: 15px; }
+.admin-editor-warning strong { color: #765d3c; font-size: 12px; }
+.admin-editor-warning span { color: #765d3c; font-size: 12px; }
+.admin-editor-actions { display: flex; justify-content: flex-end; gap: 10px; }
+@media (max-width: 700px) { .admin-editor-heading { align-items: start; flex-direction: column; } .admin-form-grid { grid-template-columns: 1fr; } .admin-editor-actions { flex-wrap: wrap; } .admin-editor-actions button { flex: 1; } }
 .admin-state-page { align-items: center; background: var(--admin-paper); display: flex; justify-content: center; min-height: 100vh; padding: 24px; }
 .admin-state-card { background: var(--admin-white); border: 1px solid var(--admin-line); max-width: 530px; padding: clamp(32px, 7vw, 72px); width: 100%; }
 .admin-state-logo { align-items: center; background: var(--admin-ink); color: var(--admin-white); display: flex; font-size: 13px; font-weight: 800; height: 38px; justify-content: center; letter-spacing: .08em; margin-bottom: 48px; width: 50px; }
