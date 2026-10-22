@@ -176,6 +176,7 @@
 .recruiter-form-help { color: rgba(255,255,255,.7); }
 .recruiter-form-message-error { color: #ffd2c6; }
 .recruiter-form-message-success { color: var(--m-teal); }
+.recruiter-form-message-pending { color: #f6d188; }
 .recruiter-form .marketing-button { border: 0; width: 100%; }
 @media (max-width: 820px) { .about-grid { grid-template-columns: 1fr; } }
 @media (max-width: 820px) { .job-market-layout, .application-paths { grid-template-columns: 1fr; } }
