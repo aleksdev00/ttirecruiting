@@ -147,6 +147,19 @@
 .faq-list summary span { color: var(--m-blue); font-size: 24px; font-weight: 400; }
 .faq-list details[open] summary span { transform: rotate(45deg); }
 .faq-list p { color: var(--m-muted); font-size: 15px; line-height: 1.6; margin: -4px 40px 24px 0; max-width: 680px; }
+.about-grid { display: grid; gap: 26px; grid-template-columns: 1fr 1fr; }
+.about-grid section:first-child { background: var(--m-blue); color: var(--m-white); padding: clamp(28px, 5vw, 52px); }
+.about-grid section:first-child .marketing-label { color: var(--m-teal); }
+.about-grid h2, .carrier-card h2 { font-size: clamp(30px, 4vw, 52px); letter-spacing: -.06em; line-height: .98; margin: 45px 0 15px; }
+.about-grid section:first-child p { color: #d9e8e7; font-size: 15px; line-height: 1.6; margin: 0; }
+.about-facts { display: grid; gap: 0; }
+.about-facts div { border-bottom: 1px solid var(--m-line); padding: 19px 0; }
+.about-facts strong, .about-facts span { display: block; }
+.about-facts strong { font-size: 19px; }
+.about-facts span { color: var(--m-muted); font-size: 13px; margin-top: 6px; }
+.carrier-card { background: var(--m-white); border: 1px solid var(--m-line); max-width: 760px; padding: clamp(30px, 5vw, 56px); }
+.carrier-card p { color: var(--m-muted); font-size: 16px; line-height: 1.65; margin: 0 0 28px; max-width: 600px; }
+@media (max-width: 820px) { .about-grid { grid-template-columns: 1fr; } }
 @media (max-width: 820px) { .job-market-layout, .application-paths { grid-template-columns: 1fr; } }
 @media (max-width: 820px) { .contact-layout, .info-step-grid { grid-template-columns: 1fr; } }
 @media (max-width: 480px) { .job-results-heading { align-items: start; flex-direction: column; gap: 16px; } .job-empty-actions, .job-empty-actions .marketing-button { width: 100%; } .application-note { align-items: start; flex-direction: column; } .application-note a { margin-left: 0; } }
