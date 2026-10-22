@@ -1,20 +1,35 @@
 # Phase 06 report: Public pages and content
 
-## Status and result
+## Status
 
-Status: PARTIAL. Added substantive public route shells for jobs, apply, how-it-works, FAQ, and carrier inquiries using the selected visual tokens, then rebuilt the homepage into a route-desk system with new hierarchy, navigation, CTA language, route rows, path cards, and catalog state. The pages distinguish W-2 handoff, recruiter-assisted 1099 intake, carrier contact, catalog-unavailable states, and contact requests. No unverified offers, testimonials, statistics, partner claims, or fake success receipts were added.
+Status: PARTIAL / design and content slice complete.
 
-## Routes implemented
+The public experience now follows a CDL job-marketplace structure instead of the previous route-desk skin. The homepage has a prominent search entry, route filters, an opportunity-desk state, driver priorities, process explanation, and explicit recruiter/carrier boundaries. The opportunity listing and application-entry routes now share the same system.
 
-`/jobs`, `/apply`, `/how-it-works`, `/faq`, and `/for-carriers` now render statically. Existing `/`, `/about`, `/contact`, `/privacy`, and `/terms` remain in place. Public company/offer catalog data is not hydrated because no sanitized published catalog store exists; `/jobs` shows an honest unavailable state.
+## Implemented
+
+- `/` rebuilt with marketplace-style discovery and search entry.
+- `/jobs` rebuilt with keyword, route, home-time, and application-path filters.
+- `/apply` rebuilt with clearly separated W-2 and recruiter-assisted 1099 paths.
+- `/contact` rebuilt as a recruiter conversation entry point.
+- `/how-it-works` rebuilt as a three-step explanation with trust callout.
+- `/faq` rebuilt with accessible native disclosure controls.
+- Shared responsive marketing chrome now supports all non-home public routes.
+- No fabricated offers, pay, testimonials, counts, carrier partnerships, or employment promises were added.
 
 ## Verification
 
 - `npm.cmd run typecheck`: passed.
 - `npm.cmd run lint`: passed.
-- `npm.cmd run build`: passed; 17 static pages/routes generated plus the dynamic quick-apply route.
-- Browser visual review: not run; browser bootstrap remains unavailable.
+- `npm.cmd run build`: passed; all listed public/admin routes generated successfully.
+- `git diff --check`: passed.
+- Local route inspection: homepage, jobs, apply, contact, how-it-works, FAQ, admin, and admin preview returned successfully after a clean build.
+- Browser screenshot QA and real-device testing: not performed; browser bootstrap remains unavailable.
 
-## Remaining limitations
+## Limitations
 
-Navigation integration with the existing v3 shell, public catalog/detail pages, and durable contact receipt still need implementation/verification. The W-2 URL is a configured handoff target but its external contract remains unverified. Admin routes are intentionally not linked publicly.
+The public catalog is intentionally unavailable until the Sheet schema, controlled import, persistence, and approval workflow are connected. The contact route remains an informational conversation entry point because durable delivery is not configured. About, privacy, and terms retain their existing substantive content and need a later copy/layout pass for complete visual unification.
+
+## Next phase
+
+Continue with catalog persistence and protected admin CRUD/import workflows. Keep production admin locked until the two immutable approved identity subjects and the authorized Sheet access method are verified.

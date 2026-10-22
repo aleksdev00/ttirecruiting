@@ -1,6 +1,6 @@
 {
   "project": "TTI Recruiting public website",
-  "updated_at_utc": "2026-10-21T18:35:00Z",
+  "updated_at_utc": "2026-10-22T08:00:00Z",
   "execution_mode": "autonomous_preview",
   "repository": {
     "root": "E:\\ttirecruiting_New_website\\ttirecruiting",
@@ -19,7 +19,7 @@
   "blocking_requirements": ["REQ-07", "REQ-08", "REQ-09"],
   "open_decisions": ["authoritative catalog persistence", "authoritative intake store", "exact admin identity subjects", "staging notification destination"],
   "pending_verification": ["full PDF rendering/extraction", "Google Sheet gid 1480331144", "public and DriverApp route contracts", "data recipient/notification ownership", "exact public claims approval"],
-  "completed_checks": ["repository identity", "AGENTS.md inspection", "npm install", "npm lint"],
+  "completed_checks": ["repository identity", "AGENTS.md inspection", "npm install", "npm lint", "typecheck", "production build", "public route inspection"],
   "report_paths": ["docs/tti/discovery.md", "docs/tti/report-comparison.md", "docs/tti/system-map.md", "docs/tti/skills-matrix.md", "docs/tti/decision-log.md", "docs/tti/risks.md", "docs/tti/requirements-matrix.md", "docs/tti/reports/PHASE-01-REPORT.md", "docs/tti/product-spec.md", "docs/tti/content-matrix.md", "docs/tti/copy-deck.md", "docs/tti/claims-register.md", "docs/tti/offer-schema.md", "docs/tti/reports/PHASE-02-REPORT.md", "docs/tti/brand-sheet.md", "docs/tti/ux-spec.md", "docs/tti/interaction-states.md", "docs/tti/reports/PHASE-03-REPORT.md", "docs/tti/design-system.md", "docs/tti/visual-direction.md", "docs/tti/asset-registry.md", "docs/tti/design-review.md", "docs/tti/reports/PHASE-04-REPORT.md", "docs/tti/configuration-contract.md", "docs/tti/reports/PHASE-05-REPORT.md", "docs/tti/reports/PHASE-06-REPORT.md", "docs/tti/sheet-field-map.md", "docs/tti/reports/PHASE-07-REPORT.md", "docs/tti/reports/REDESIGN-REPORT.md"],
   "next_actions": ["choose persistence/auth provider based on verified infrastructure", "implement synthetic import test harness and protected admin CRUD once store is configured", "keep live catalog/admin activation disabled until identities and Sheet access are verified"],
   "company_catalog_source": {"spreadsheet_id": "1wC_EScBRSJOqfS3KFlFlargOlTNT65cOJOhDzEGQ-TE", "gid": "1480331144", "source_access": "NOT_VERIFIED", "mode": "controlled_read_only_import_into_admin_managed_catalog", "writeback_authorized": false},
